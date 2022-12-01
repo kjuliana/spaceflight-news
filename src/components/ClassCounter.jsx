@@ -6,7 +6,6 @@ class ClassCounter extends React.Component {
         this.state = {
             count: 0
         }
-
         this.increment = this.increment.bind(this) // Привязка this (контеста) к функции increment
     }
 
