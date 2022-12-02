@@ -43,6 +43,11 @@
     transition: all 500ms ease-in;
 }
 
+.post__btns {
+    display: flex;
+    padding: 10px;
+}
+
 .page__wrapper {
     margin-top: 30px;
     display: flex;
@@ -68,6 +73,7 @@
     background: thistle;
 }
 
-.navbar__links {
+.navbar__items {
     margin-left: auto;
+
 }
