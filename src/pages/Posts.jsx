@@ -27,11 +27,11 @@ function Posts() {
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading) => {
         const response = await PostService.getAll(limit, page);
         if (isAutoLoading) {
-            setPosts([...posts, ...response.data]);
+            setPosts([...posts, ...response.data.posts]);
         } else {
-            setPosts(response.data);
+            setPosts(response.data.posts);
         }
-        const totalCount = response.headers['x-total-count'];
+        const totalCount = response.data.total;
         setTotalPages(getPagesCount(totalCount, limit));
     });
 
@@ -78,7 +78,7 @@ function Posts() {
                     {value: 5, name:'5'},
                     {value: 10, name:'10'},
                     {value: 25, name:'25'},
-                    {value: -1, name:'Показать все'},
+                    {value: Infinity, name:'Показать все'},
                 ]}
             />
             <div>

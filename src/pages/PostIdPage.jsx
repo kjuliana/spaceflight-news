@@ -15,7 +15,7 @@ const PostIdPage = () => {
     });
     const [fetchComments, isComLoading, comError] = useFetching(async (id) => {
         const response = await PostService.getCommentsByPostId(id);
-        setComments(response.data);
+        setComments(response.data.comments);
     });
 
     useEffect(() => {
@@ -24,23 +24,29 @@ const PostIdPage = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Страница поста номер {postId}</h1>
+        <div className='App'>
             {
                 isLoading
                     ? <Loader/>
-                    : <div>{post.id}. {post.title}</div>
-            }
-            <h2>Комментарии</h2>
-            {isComLoading
-                ? <Loader/>
-                : <div>{comments.map(comm =>
-                    <div key={comm.id} style={{marginTop: '15px'}}>
-                        <h5>{comm.email} </h5>
-                        <p> {comm.body} </p>
+                    : <div>
+                        <div className='postPage__content'>
+                            <h1>{post.id}. {post.title}</h1>
+                            <p>{post.body}</p>
+                        </div>
+                        <div className='postPage__comments'>
+                            <h3>Комментарии</h3>
+                            {isComLoading
+                                ? <Loader/>
+                                : <div>{comments.map(comm =>
+                                    <div className='postPage__comment' key={comm.id}>
+                                        <h5>@{comm.user.username} </h5>
+                                        <p> {comm.body} </p>
+                                    </div>
+                                )}
+                                </div>
+                            }
+                        </div>
                     </div>
-                )}
-                </div>
             }
         </div>
     );

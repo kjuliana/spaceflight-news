@@ -1,6 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const PostItem = (props) => {
     const navigate = useNavigate();
@@ -8,7 +8,9 @@ const PostItem = (props) => {
     return (
         <div className='post'>
             <div className='post__content'>
-                <strong>{props.post.id}. {props.post.title}</strong>
+                <Link to={"/posts/"+props.post.id}>
+                    <strong>{props.post.id}. {props.post.title}</strong>
+                </Link>
                 <div>
                     {props.post.body}
                 </div>

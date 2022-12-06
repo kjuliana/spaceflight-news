@@ -5,4 +5,6 @@
     background: transparent;
     border: 1px solid var(--main-pink);
     cursor: pointer;
+    font-family: system-ui;
+    font: inherit;
 }
