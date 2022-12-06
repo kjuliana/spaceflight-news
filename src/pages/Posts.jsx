@@ -18,24 +18,30 @@ function Posts() {
     const [filter, setFilter] = useState({sort: '', query: ''});
     const [modal, setModal] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(5);
     const [page, setPage] = useState(1);
+    const [isAutoLoading, setIsAutoLoading] = useState(false);
     const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
     const lastElement = useRef();
 
-    const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page) => {
+    const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading) => {
         const response = await PostService.getAll(limit, page);
-        setPosts([...posts, ...response.data]);
+        if (isAutoLoading) {
+            setPosts([...posts, ...response.data]);
+        } else {
+            setPosts(response.data);
+        }
         const totalCount = response.headers['x-total-count'];
         setTotalPages(getPagesCount(totalCount, limit));
     });
 
-    useObserver(lastElement, page < totalPages, isPostsLoading, () => {
-        setPage(page + 1)
+
+    useObserver(lastElement, page <= totalPages,isAutoLoading && !isPostsLoading, () => {
+            setPage(page + 1);
     });
 
     useEffect(() => {
-        fetchPosts(limit, page);
+        fetchPosts(limit, page, isAutoLoading);
     }, [page, limit])
 
     const createPost = (newPost) => {
@@ -75,19 +81,27 @@ function Posts() {
                     {value: -1, name:'Показать все'},
                 ]}
             />
+            <div>
+                <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                <label htmlFor='autoLoading'> Бесконечная лента</label>
+            </div>
             {postError &&
                 <h1>Произошла ошибка ${postError}</h1>
             }
             <PostList posts={sortedAndSearchedPosts} title={'Посты про JS'} remove={removePost}/>
+
             <div ref={lastElement}/>
+            { !isAutoLoading &&
+                <Pagination
+                    changePage={changePage}
+                    page={page}
+                    totalPages={totalPages}
+                />
+            }
+
             { isPostsLoading &&
                 <div style={{display:"flex", justifyContent: 'center', marginTop: 50}}><Loader/></div>
             }
-            <Pagination
-                changePage={changePage}
-                page={page}
-                totalPages={totalPages}
-            />
         </div>
     );
 }
