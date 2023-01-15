@@ -7,20 +7,15 @@ const PostItem = (props) => {
 
     return (
         <div className='post'>
-            <div className='post__content'>
-                <Link to={"/posts/"+props.post.id}>
-                    <strong>{props.post.id}. {props.post.title}</strong>
-                </Link>
+            <Link to={"/posts/"+props.post.id} className='post__content'>
+                <strong>{props.post.title}</strong>
                 <div>
                     {props.post.body}
                 </div>
-            </div>
+            </Link>
             <div className='post__btns'>
-                <MyButton onClick={() => navigate("/posts/"+props.post.id)}>
-                    Открыть
-                </MyButton>
                 <MyButton onClick={() => props.remove(props.post)}>
-                    Удалить
+                    🗑
                 </MyButton>
             </div>
         </div>

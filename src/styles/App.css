@@ -3,20 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui;
+    text-decoration: none;
 }
 
 :root {
-    --main-pink: rgba(119, 46, 147, 0.55);
+    --main-pink: rgba(149, 44, 169, 0.55);
+    --hover-button: rgba(128, 128, 128, 0.16);
 }
 
 
 #root {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: stretch;
 }
 
 .App {
+    padding: 2rem;
     width: 800px;
 }
 
@@ -26,7 +29,7 @@
     border: 2px solid var(--main-pink);
     margin-top: 15px;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     border-radius: 0.3em;
 }
 
@@ -50,7 +53,6 @@
 
 .post__btns {
     display: flex;
-    padding: 10px;
 }
 
 .page__wrapper {
@@ -73,17 +75,27 @@
 }
 
 .navbar {
-    height: 50px;
-    width: 100vw;
+    width: 25%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 0 15px;
-    background: thistle;
+    padding: 0 60px;
+    border-right: solid 1px rgb(207, 217, 222);;
 }
 
 .navbar__items {
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
 
+.navbar__item {
+    padding: 20px 20px;
+    border-radius: 9999px;
+}
+
+.navbar__item:hover {
+    background-color: var(--hover-button);
 }
 
 .postPage__content {
@@ -99,4 +111,11 @@
     margin-top: 1em;
     border-left: 4px solid var(--main-pink);
     padding-left: 2%;
+}
+
+.gg {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
 }

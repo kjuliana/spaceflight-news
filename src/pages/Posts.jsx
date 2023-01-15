@@ -59,17 +59,20 @@ function Posts() {
 
     return (
         <div className="App">
-            <MyButton style={{marginTop: 30}} onClick={() => setModal(true)} >
-                Создать пост
-            </MyButton>
             <MyModal visible={modal} setVisible={setModal}>
                 <PostForm create={createPost}/>
             </MyModal>
-            <hr style={{margin: '15px 0'}}/>
-            <PostFilter
-                filter={filter}
-                setFilter={setFilter}
-            />
+
+            <div className='gg'>
+                <PostFilter
+                    filter={filter}
+                    setFilter={setFilter}
+                />
+                <MyButton onClick={() => setModal(true)} >
+                    Создать пост
+                </MyButton>
+            </div>
+
             <MySelect
                 value={limit}
                 onChange={value => setLimit(value)}
@@ -88,7 +91,7 @@ function Posts() {
             {postError &&
                 <h1>Произошла ошибка ${postError}</h1>
             }
-            <PostList posts={sortedAndSearchedPosts} title={'Посты про JS'} remove={removePost}/>
+            <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
 
             <div ref={lastElement}/>
             { !isAutoLoading &&

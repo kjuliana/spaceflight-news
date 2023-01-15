@@ -1,10 +1,16 @@
 .myBtn{
+    border: none;
     padding: 5px 15px;
     color: var(--main-pink);
     font-size: 14px;
     background: transparent;
-    border: 1px solid var(--main-pink);
     cursor: pointer;
     font-family: system-ui;
     font: inherit;
+    border-radius: 9999px;
+}
+
+.myBtn:hover {
+    border-radius: 9999px;
+    background-color: var(--hover-button);
 }
