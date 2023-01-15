@@ -62,49 +62,84 @@ function Posts() {
             <MyModal visible={modal} setVisible={setModal}>
                 <PostForm create={createPost}/>
             </MyModal>
-
-            <div className='gg'>
-                <PostFilter
-                    filter={filter}
-                    setFilter={setFilter}
+            <div className="main-content">
+                <div className='gg'>
+                    <PostFilter
+                        filter={filter}
+                        setFilter={setFilter}
+                    />
+                    <MyButton onClick={() => setModal(true)} >
+                        Создать пост
+                    </MyButton>
+                </div>
+                <MySelect
+                    value={filter.sort}
+                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
+                    defaultValue='Сортировка по'
+                    options={[
+                        {value: 'title', name: 'По названию'},
+                        {value: 'body', name: 'По описанию'}
+                    ]}
                 />
-                <MyButton onClick={() => setModal(true)} >
-                    Создать пост
-                </MyButton>
-            </div>
-
-            <MySelect
-                value={limit}
-                onChange={value => setLimit(value)}
-                defaultValue='Количество постов на странице'
-                options={[
-                    {value: 5, name:'5'},
-                    {value: 10, name:'10'},
-                    {value: 25, name:'25'},
-                    {value: Infinity, name:'Показать все'},
-                ]}
-            />
-            <div>
-                <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                <label htmlFor='autoLoading'> Бесконечная лента</label>
-            </div>
-            {postError &&
+                <MySelect
+                    value={limit}
+                    onChange={value => setLimit(value)}
+                    defaultValue='Количество постов на странице'
+                    options={[
+                        {value: 5, name:'5'},
+                        {value: 10, name:'10'},
+                        {value: 25, name:'25'},
+                        {value: Infinity, name:'Показать все'},
+                    ]}
+                />
+                <div>
+                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                    <label htmlFor='autoLoading'> Бесконечная лента</label>
+                </div>
+                {postError &&
                 <h1>Произошла ошибка ${postError}</h1>
-            }
-            <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
+                }
+                <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
 
-            <div ref={lastElement}/>
-            { !isAutoLoading &&
+                <div ref={lastElement}/>
+                { !isAutoLoading &&
                 <Pagination
                     changePage={changePage}
                     page={page}
                     totalPages={totalPages}
                 />
-            }
+                }
 
-            { isPostsLoading &&
+                { isPostsLoading &&
                 <div style={{display:"flex", justifyContent: 'center', marginTop: 50}}><Loader/></div>
-            }
+                }
+            </div>
+            <div className="filter-content">
+                <MySelect
+                    value={filter.sort}
+                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
+                    defaultValue='Сортировка по'
+                    options={[
+                        {value: 'title', name: 'По названию'},
+                        {value: 'body', name: 'По описанию'}
+                    ]}
+                />
+                <MySelect
+                    value={limit}
+                    onChange={value => setLimit(value)}
+                    defaultValue='Количество постов на странице'
+                    options={[
+                        {value: 5, name:'5'},
+                        {value: 10, name:'10'},
+                        {value: 25, name:'25'},
+                        {value: Infinity, name:'Показать все'},
+                    ]}
+                />
+                <div>
+                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                    <label htmlFor='autoLoading'> Бесконечная лента</label>
+                </div>
+            </div>
         </div>
     );
 }
