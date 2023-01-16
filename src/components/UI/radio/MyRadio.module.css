@@ -1,0 +1,8 @@
+.block {
+    white-space: pre;
+    font-size: 15px;
+}
+
+.name {
+    font-weight: bold;
+}

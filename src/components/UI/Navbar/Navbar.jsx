@@ -12,15 +12,15 @@ const Navbar = () => {
     }
 
     return (
-        <div className='navbar'>
+        <div className='navbar side-bar'>
             <div className='navbar__items'>
                 <Link className='navbar__item' to="/">Главная</Link>
                 <Link className='navbar__item' to="/about">О приложении</Link>
                 <Link className='navbar__item' to="/posts">Блог</Link>
+                <div className='navbar__item' onClick={logout}>
+                    Выйти
+                </div>
             </div>
-            <MyButton onClick={logout}>
-                Выйти
-            </MyButton>
         </div>
     );
 };

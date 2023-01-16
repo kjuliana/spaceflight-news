@@ -60,39 +60,41 @@ function Posts() {
     }
 
     return (
-        <div className="App">
-            <MyModal visible={modal} setVisible={setModal}>
-                <PostForm create={createPost}/>
-            </MyModal>
-            <div className="main-content">
-                <div className='main-content_search'>
-                    <MyInput
-                        value={filter.query}
-                        onChange={e => setFilter({...filter, query: e.target.value})}
-                        placeholder='Поиск...'
+        <>
+            <div className="App">
+                <MyModal visible={modal} setVisible={setModal}>
+                    <PostForm create={createPost}/>
+                </MyModal>
+                <div className="main-content">
+                    <div className='main-content_search'>
+                        <MyInput
+                            value={filter.query}
+                            onChange={e => setFilter({...filter, query: e.target.value})}
+                            placeholder='Поиск...'
+                        />
+                        <MyButton onClick={() => setModal(true)} >
+                            Создать пост
+                        </MyButton>
+                    </div>
+                    {postError &&
+                    <h1>Произошла ошибка ${postError}</h1>
+                    }
+                    <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
+                    <div ref={lastElement} style={{height: 1}}/>
+                    { !isAutoLoading &&
+                    <Pagination
+                        changePage={changePage}
+                        page={page}
+                        totalPages={totalPages}
                     />
-                    <MyButton onClick={() => setModal(true)} >
-                        Создать пост
-                    </MyButton>
-                </div>
-                {postError &&
-                <h1>Произошла ошибка ${postError}</h1>
-                }
-                <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
-                <div ref={lastElement} style={{height: 1}}/>
-                { !isAutoLoading &&
-                <Pagination
-                    changePage={changePage}
-                    page={page}
-                    totalPages={totalPages}
-                />
-                }
+                    }
 
-                { isPostsLoading &&
-                <div style={{display:"flex", justifyContent: 'center', marginTop: 50}}><Loader/></div>
-                }
+                    { isPostsLoading &&
+                    <div style={{display:"flex", justifyContent: 'center', marginTop: 50}}><Loader/></div>
+                    }
+                </div>
             </div>
-            <div className="filter-content">
+            <div className="filter-content side-bar">
                 <PostFilter
                     filter={filter}
                     setFilter={setFilter}
@@ -104,7 +106,7 @@ function Posts() {
                     <label htmlFor='autoLoading'>Бесконечная лента</label>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
