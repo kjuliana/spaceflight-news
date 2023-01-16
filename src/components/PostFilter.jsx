@@ -11,6 +11,7 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                 defaultValue='Сортировка по'
                 options={[
+                    {value: '', name: 'По умолчанию'},
                     {value: 'title', name: 'По названию'},
                     {value: 'body', name: 'По описанию'}
                 ]}
@@ -19,7 +20,6 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
                 value={limit}
                 onChange={value => setLimit(value)}
                 defaultValue='Количество постов на странице'
-                checked={5}
                 options={[
                     {value: 5, name:'5'},
                     {value: 10, name:'10'},

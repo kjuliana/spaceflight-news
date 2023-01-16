@@ -6,3 +6,8 @@
 .name {
     font-weight: bold;
 }
+
+.option {
+    display: flex;
+    justify-content: space-between;
+}
