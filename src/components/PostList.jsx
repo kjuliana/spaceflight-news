@@ -11,7 +11,7 @@ const PostList = ({posts, title, remove}) => {
         )
     }
     return (
-        <div className="App">
+        <div className="posts">
             <TransitionGroup>
                 {posts.map((post, index) =>
                     <CSSTransition

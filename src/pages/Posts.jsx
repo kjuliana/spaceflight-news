@@ -12,6 +12,7 @@ import {getPagesCount} from "../utils/page";
 import Pagination from "../components/UI/pagination/Pagination";
 import {useObserver} from "../hooks/useObserver";
 import MySelect from "../components/UI/select/MySelect";
+import MyInput from "../components/UI/input/MyInput";
 
 function Posts() {
     const [posts, setPosts] = useState([])
@@ -37,6 +38,7 @@ function Posts() {
 
 
     useObserver(lastElement, page <= totalPages,isAutoLoading && !isPostsLoading, () => {
+            console.log('intersect');
             setPage(page + 1);
     });
 
@@ -63,45 +65,21 @@ function Posts() {
                 <PostForm create={createPost}/>
             </MyModal>
             <div className="main-content">
-                <div className='gg'>
-                    <PostFilter
-                        filter={filter}
-                        setFilter={setFilter}
+                <div className='main-content_search'>
+                    <MyInput
+                        value={filter.query}
+                        onChange={e => setFilter({...filter, query: e.target.value})}
+                        placeholder='Поиск...'
                     />
                     <MyButton onClick={() => setModal(true)} >
                         Создать пост
                     </MyButton>
                 </div>
-                <MySelect
-                    value={filter.sort}
-                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                    defaultValue='Сортировка по'
-                    options={[
-                        {value: 'title', name: 'По названию'},
-                        {value: 'body', name: 'По описанию'}
-                    ]}
-                />
-                <MySelect
-                    value={limit}
-                    onChange={value => setLimit(value)}
-                    defaultValue='Количество постов на странице'
-                    options={[
-                        {value: 5, name:'5'},
-                        {value: 10, name:'10'},
-                        {value: 25, name:'25'},
-                        {value: Infinity, name:'Показать все'},
-                    ]}
-                />
-                <div>
-                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                    <label htmlFor='autoLoading'> Бесконечная лента</label>
-                </div>
                 {postError &&
                 <h1>Произошла ошибка ${postError}</h1>
                 }
                 <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
-
-                <div ref={lastElement}/>
+                <div ref={lastElement} style={{height: 1}}/>
                 { !isAutoLoading &&
                 <Pagination
                     changePage={changePage}
@@ -115,29 +93,15 @@ function Posts() {
                 }
             </div>
             <div className="filter-content">
-                <MySelect
-                    value={filter.sort}
-                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                    defaultValue='Сортировка по'
-                    options={[
-                        {value: 'title', name: 'По названию'},
-                        {value: 'body', name: 'По описанию'}
-                    ]}
-                />
-                <MySelect
-                    value={limit}
-                    onChange={value => setLimit(value)}
-                    defaultValue='Количество постов на странице'
-                    options={[
-                        {value: 5, name:'5'},
-                        {value: 10, name:'10'},
-                        {value: 25, name:'25'},
-                        {value: Infinity, name:'Показать все'},
-                    ]}
+                <PostFilter
+                    filter={filter}
+                    setFilter={setFilter}
+                    limit={limit}
+                    setLimit={setLimit}
                 />
                 <div>
                     <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                    <label htmlFor='autoLoading'> Бесконечная лента</label>
+                    <label htmlFor='autoLoading'>Бесконечная лента</label>
                 </div>
             </div>
         </div>
