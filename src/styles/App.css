@@ -16,7 +16,7 @@
 .root {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: start;
     justify-content: space-between;
     max-width: 1200px;
     margin: auto;
@@ -25,6 +25,7 @@
 .App {
     display: flex;
     justify-content: center;
+    max-width: 50%;
 }
 
 .posts {
@@ -92,8 +93,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 40%;
-    margin: 1em;
 }
 
 .navbar__items {
@@ -147,6 +146,13 @@
 }
 
 .side-bar {
-    margin: 1em;
+    padding: 1em;
     max-width: 40%;
+    position: sticky;
+    top: 0;
+}
+
+.option-checkbox {
+    display: flex;
+    justify-content: space-between;
 }

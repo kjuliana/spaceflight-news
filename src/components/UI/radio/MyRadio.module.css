@@ -1,6 +1,7 @@
 .block {
-    white-space: pre;
+    white-space: nowrap;
     font-size: 15px;
+    padding-bottom: 1em;
 }
 
 .name {
@@ -10,4 +11,8 @@
 .option {
     display: flex;
     justify-content: space-between;
+}
+
+.radio {
+
 }

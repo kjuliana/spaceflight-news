@@ -47,7 +47,7 @@ function Posts() {
     }, [page, limit])
 
     const createPost = (newPost) => {
-        setPosts([...posts, newPost]);
+        setPosts([newPost, ...posts]);
         setModal(false);
     }
 
@@ -101,9 +101,9 @@ function Posts() {
                     limit={limit}
                     setLimit={setLimit}
                 />
-                <div>
-                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                <div className="option-checkbox">
                     <label htmlFor='autoLoading'>Бесконечная лента</label>
+                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
                 </div>
             </div>
         </>
