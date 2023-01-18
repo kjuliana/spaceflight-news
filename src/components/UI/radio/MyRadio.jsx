@@ -13,7 +13,6 @@ const MyRadio = ({options, defaultValue, value, onChange}) => {
                                value={option.value}
                                id={option.value}
                                onChange={(e) => {
-                                   console.log('kk');
                                    onChange(e.target.value)
                                }}
                                checked={String(value) === String(option.value)}

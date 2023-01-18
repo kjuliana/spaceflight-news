@@ -38,7 +38,6 @@ function Posts() {
 
 
     useObserver(lastElement, page <= totalPages,isAutoLoading && !isPostsLoading, () => {
-            console.log('intersect');
             setPage(page + 1);
     });
 
