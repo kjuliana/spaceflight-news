@@ -60,7 +60,7 @@ function Posts() {
 
     return (
         <>
-            <div className="App">
+            <div className="posts">
                 <MyModal visible={modal} setVisible={setModal}>
                     <PostForm create={createPost}/>
                 </MyModal>

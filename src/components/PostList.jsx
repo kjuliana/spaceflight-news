@@ -11,7 +11,7 @@ const PostList = ({posts, title, remove}) => {
         )
     }
     return (
-        <div className="posts">
+        <div className="post-list">
             <TransitionGroup>
                 {posts.map((post, index) =>
                     <CSSTransition

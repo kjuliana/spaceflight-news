@@ -24,11 +24,11 @@ const PostIdPage = () => {
     }, [])
 
     return (
-        <div className='App'>
+        <div>
             {
                 isLoading
                     ? <Loader/>
-                    : <div>
+                    : <div className='postPage'>
                         <div className='postPage__content'>
                             <h1>{post.id}. {post.title}</h1>
                             <p>{post.body}</p>

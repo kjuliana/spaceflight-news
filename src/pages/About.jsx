@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div className='about-page'>
             Это приложение создано с целью обучения основам React.
         </div>
     );

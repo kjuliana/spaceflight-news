@@ -22,14 +22,15 @@
     margin: auto;
 }
 
-.App {
-    display: flex;
-    justify-content: center;
+.postPage {
     max-width: 50%;
+    margin: auto;
 }
 
 .posts {
-
+    display: flex;
+    justify-content: center;
+    max-width: 50%;
 }
 
 .post {
@@ -211,4 +212,24 @@
 
 .checkbox:checked + .checkbox-label:after {
     opacity: 1;
+}
+
+.login-wrapper {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.about-page {
+    flex-grow: 1;
+    margin: 3em;
 }
