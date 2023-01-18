@@ -151,10 +151,11 @@
 }
 
 .side-bar {
+    width: 25%;
     padding: 2em;
-    width: 40%;
     position: sticky;
     top: 0;
+    max-width: 25%;
 }
 
 .option-checkbox {
