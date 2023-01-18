@@ -7,15 +7,18 @@ const MyRadio = ({options, defaultValue, value, onChange}) => {
                 <p className={classes.name}>{defaultValue}</p>
                 {options.map(option =>
                     <div className={classes.option}>
-                        <label htmlFor={option.value}> {option.name} </label>
                         <input type='radio'
                                className={classes.radio}
                                name={defaultValue}
                                value={option.value}
                                id={option.value}
-                               onChange={(e) => onChange(e.target.value)}
+                               onChange={(e) => {
+                                   console.log('kk');
+                                   onChange(e.target.value)
+                               }}
                                checked={String(value) === String(option.value)}
                         />
+                        <label className={classes.label} htmlFor={option.value}> {option.name} </label>
                      </div>
                 )}
         </div>

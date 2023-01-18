@@ -14,5 +14,47 @@
 }
 
 .radio {
-
+    position: absolute;
+    appearance: none;
 }
+
+.radio + .label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.radio + .label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.radio + .label:after {
+    content: "";
+    position: absolute;
+    transition: all 0.2s ease;
+    left: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #45a0e1;
+}
+
+.radio + .label:after {
+    opacity: 0;
+}
+
+.radio:checked + .label:after {
+    opacity: 1;
+}
+

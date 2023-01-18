@@ -16,7 +16,7 @@ import MyInput from "../components/UI/input/MyInput";
 
 function Posts() {
     const [posts, setPosts] = useState([])
-    const [filter, setFilter] = useState({sort: '', query: ''});
+    const [filter, setFilter] = useState({sort: 'default', query: ''});
     const [modal, setModal] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [limit, setLimit] = useState(5);
