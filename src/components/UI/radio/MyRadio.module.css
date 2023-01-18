@@ -1,6 +1,5 @@
 .block {
     white-space: nowrap;
-    font-size: 15px;
     padding-bottom: 1em;
 }
 
@@ -49,7 +48,7 @@
     top: 1px;
     width: 1em;
     height: 1em;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: #45a0e1;
 }
 

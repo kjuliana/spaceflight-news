@@ -101,8 +101,8 @@ function Posts() {
                     setLimit={setLimit}
                 />
                 <div className="option-checkbox">
-                    <label htmlFor='autoLoading'>Бесконечная лента</label>
-                    <input type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                    <input className='checkbox' type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                    <label className='checkbox-label' htmlFor='autoLoading'>Бесконечная лента</label>
                 </div>
             </div>
         </>
