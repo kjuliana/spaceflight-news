@@ -17,9 +17,9 @@ const Navbar = () => {
                 <Link className='navbar__item' to="/">Главная</Link>
                 <Link className='navbar__item' to="/about">О приложении</Link>
                 <Link className='navbar__item' to="/posts">Блог</Link>
-                <div className='navbar__item' onClick={logout}>
+                <button className='navbar__item' onClick={logout}>
                     Выйти
-                </div>
+                </button>
             </div>
         </div>
     );

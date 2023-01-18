@@ -103,10 +103,14 @@
 }
 
 .navbar__item {
-    padding: 20px 20px;
+    font: inherit;
+    border: none;
+    background: none;
+    padding: 15px;
     border-radius: 9999px;
     transition: 0.2s;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .navbar__item:hover {
@@ -147,8 +151,8 @@
 }
 
 .side-bar {
-    padding: 1em;
-    max-width: 40%;
+    padding: 2em;
+    width: 40%;
     position: sticky;
     top: 0;
 }
@@ -165,6 +169,7 @@
 
 .checkbox-label {
     width: 100%;
+    user-select: none;
 }
 
 .checkbox + .checkbox-label {

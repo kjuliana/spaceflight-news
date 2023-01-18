@@ -19,7 +19,7 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
             <MyRadio
                 value={limit}
                 onChange={value => setLimit(value)}
-                defaultValue='Количество постов на странице'
+                defaultValue='Постов на странице'
                 options={[
                     {value: 5, name:'5'},
                     {value: 10, name:'10'},
