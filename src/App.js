@@ -1,13 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './styles/App.css'
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
-import About from "./pages/About";
-import Posts from "./pages/Posts";
-import Main from "./pages/Main";
-import ErrorPage from "./pages/ErrorPage";
-import PostIdPage from "./pages/PostIdPage";
-import Loader from "./components/UI/Loader/Loader";
-import Login from "./pages/Login";
+import About from "./pages/About/About";
+import Posts from "./pages/Posts/Posts";
+import Main from "./pages/Main/Main";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import PostIdPage from "./pages/PostIdPage/PostIdPage";
+import Login from "./pages/Login/Login";
 import {AuthContext} from "./context";
 
 const privateRouter = createBrowserRouter([

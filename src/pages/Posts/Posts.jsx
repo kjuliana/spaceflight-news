@@ -1,18 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react';
-import PostList from "../components/PostList";
-import MyButton from "../components/UI/button/MyButton";
-import PostForm from "../components/PostForm";
-import PostFilter from "../components/PostFilter";
-import MyModal from "../components/UI/MyModal/MyModal";
-import Loader from "../components/UI/Loader/Loader";
-import {usePosts} from "../hooks/usePosts";
-import PostService from "../API/PostService";
-import {useFetching} from "../hooks/useFetching";
-import {getPagesCount} from "../utils/page";
-import Pagination from "../components/UI/pagination/Pagination";
-import {useObserver} from "../hooks/useObserver";
-import MySelect from "../components/UI/select/MySelect";
-import MyInput from "../components/UI/input/MyInput";
+import PostList from "../../components/PostList/PostList";
+import MyButton from "../../components/UI/button/MyButton";
+import PostForm from "../../components/PostForm/PostForm";
+import PostFilter from "../../components/PostFilter/PostFilter";
+import MyModal from "../../components/UI/MyModal/MyModal";
+import Loader from "../../components/UI/Loader/Loader";
+import {usePosts} from "../../hooks/usePosts";
+import PostService from "../../API/PostService";
+import {useFetching} from "../../hooks/useFetching";
+import {getPagesCount} from "../../utils/page";
+import Pagination from "../../components/UI/pagination/Pagination";
+import {useObserver} from "../../hooks/useObserver";
+import MySelect from "../../components/UI/select/MySelect";
+import MyInput from "../../components/UI/input/MyInput";
+import styles from './Posts.module.css';
 
 function Posts() {
     const [posts, setPosts] = useState([])
@@ -60,12 +61,12 @@ function Posts() {
 
     return (
         <>
-            <div className="posts">
+            <div className={styles.posts}>
                 <MyModal visible={modal} setVisible={setModal}>
                     <PostForm create={createPost}/>
                 </MyModal>
-                <div className="main-content">
-                    <div className='main-content_search'>
+                <div className={styles.content}>
+                    <div className={styles.search}>
                         <MyInput
                             value={filter.query}
                             onChange={e => setFilter({...filter, query: e.target.value})}
@@ -93,16 +94,16 @@ function Posts() {
                     }
                 </div>
             </div>
-            <div className="filter-content side-bar">
+            <div className={styles.filter + " sidebar"}>
                 <PostFilter
                     filter={filter}
                     setFilter={setFilter}
                     limit={limit}
                     setLimit={setLimit}
                 />
-                <div className="option-checkbox">
-                    <input className='checkbox' type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                    <label className='checkbox-label' htmlFor='autoLoading'>Бесконечная лента</label>
+                <div className={styles.checkboxWrapper}>
+                    <input className={styles.checkbox} type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
+                    <label className={styles.checkboxLabel} htmlFor='autoLoading'>Бесконечная лента</label>
                 </div>
             </div>
         </>

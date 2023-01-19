@@ -1,7 +1,5 @@
 import React from 'react';
-import MyInput from "./UI/input/MyInput";
-import MySelect from "./UI/select/MySelect";
-import MyRadio from "./UI/radio/MyRadio";
+import MyRadio from "../UI/radio/MyRadio";
 
 const PostFilter = ({filter, setFilter, limit, setLimit}) => {
     return (

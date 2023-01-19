@@ -1,0 +1,19 @@
+.root {
+    max-width: 50%;
+    margin: auto;
+}
+
+.content {
+    margin-top: 2em;
+}
+
+.comments {
+    margin-top: 2em;
+    border-top: 2px solid var(--main-color);
+}
+
+.comment {
+    margin-top: 1em;
+    border-left: 4px solid var(--main-color);
+    padding-left: 2%;
+}

@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {useFetching} from "../hooks/useFetching";
-import PostService from "../API/PostService";
-import Loader from "../components/UI/Loader/Loader";
+import {useFetching} from "../../hooks/useFetching";
+import PostService from "../../API/PostService";
+import Loader from "../../components/UI/Loader/Loader";
+import styles from './PostIdPage.module.css'
 
 const PostIdPage = () => {
     const {postId} = useParams();
@@ -24,21 +25,21 @@ const PostIdPage = () => {
     }, [])
 
     return (
-        <div>
+        <>
             {
                 isLoading
                     ? <Loader/>
-                    : <div className='postPage'>
-                        <div className='postPage__content'>
+                    : <div className={styles.root}>
+                        <div className={styles.content}>
                             <h1>{post.id}. {post.title}</h1>
                             <p>{post.body}</p>
                         </div>
-                        <div className='postPage__comments'>
+                        <div className={styles.comments}>
                             <h3>Комментарии</h3>
                             {isComLoading
                                 ? <Loader/>
                                 : <div>{comments.map(comm =>
-                                    <div className='postPage__comment' key={comm.id}>
+                                    <div className={styles.comment} key={comm.id}>
                                         <h5>@{comm.user.username} </h5>
                                         <p> {comm.body} </p>
                                     </div>
@@ -48,7 +49,7 @@ const PostIdPage = () => {
                         </div>
                     </div>
             }
-        </div>
+        </>
     );
 };
 

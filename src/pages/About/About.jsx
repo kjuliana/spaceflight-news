@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './About.module.css';
 
 const About = () => {
     return (
-        <div className='about-page'>
+        <div className={styles.root}>
             Это приложение создано с целью обучения основам React.
         </div>
     );

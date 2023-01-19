@@ -1,14 +1,14 @@
 import React from 'react';
-import classes from './MyRadio.module.css'
+import styles from './MyRadio.module.css'
 
 const MyRadio = ({options, defaultValue, value, onChange}) => {
     return (
-        <div className={classes.block}>
-                <p className={classes.name}>{defaultValue}</p>
+        <div className={styles.root}>
+                <p className={styles.name}>{defaultValue}</p>
                 {options.map(option =>
-                    <div className={classes.option}>
+                    <div className={styles.option} key={option.value}>
                         <input type='radio'
-                               className={classes.radio}
+                               className={styles.radio}
                                name={defaultValue}
                                value={option.value}
                                id={option.value}
@@ -17,7 +17,7 @@ const MyRadio = ({options, defaultValue, value, onChange}) => {
                                }}
                                checked={String(value) === String(option.value)}
                         />
-                        <label className={classes.label} htmlFor={option.value}> {option.name} </label>
+                        <label className={styles.label} htmlFor={option.value}> {option.name} </label>
                      </div>
                 )}
         </div>

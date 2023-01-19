@@ -1,4 +1,4 @@
-.myBtn{
+.root{
     border: none;
     padding: 5px 15px;
     color: var(--main-pink);
@@ -10,7 +10,7 @@
     border-radius: 9999px;
 }
 
-.myBtn:hover {
+.root:hover {
     border-radius: 9999px;
     background-color: var(--hover-button);
 }

@@ -1,0 +1,18 @@
+.root {
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page {
+    text-align: center;
+    padding: 10px;
+    width: 40px;
+    cursor: pointer;
+    color: black;
+}
+
+.page__current {
+    border-bottom: 1px solid var(--hover-button);
+    font-weight: bold;
+}
