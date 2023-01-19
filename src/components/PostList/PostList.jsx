@@ -1,7 +1,7 @@
 import React from 'react';
 import PostItem from "../PostItem/PostItem";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
-import styles from '../PostItem/PostItem.module.css'
+import styles from '../PostItem/PostItem.module.css';
 
 const PostList = ({posts, remove}) => {
     if (!posts.length) {

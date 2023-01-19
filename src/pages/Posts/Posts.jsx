@@ -11,7 +11,6 @@ import {useFetching} from "../../hooks/useFetching";
 import {getPagesCount} from "../../utils/page";
 import Pagination from "../../components/UI/pagination/Pagination";
 import {useObserver} from "../../hooks/useObserver";
-import MySelect from "../../components/UI/select/MySelect";
 import MyInput from "../../components/UI/input/MyInput";
 import styles from './Posts.module.css';
 

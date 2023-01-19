@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MyRadio.module.css'
+import styles from './MyRadio.module.css';
 
 const MyRadio = ({options, defaultValue, value, onChange}) => {
     return (
