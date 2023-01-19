@@ -14,9 +14,10 @@
     background: white;
     border-radius: 16px;
     min-width: 250px;
+    width: 30%;
 }
 
-.myModal.active {
+.root.active {
     display: flex;
     justify-content: center;
     align-items: center;
