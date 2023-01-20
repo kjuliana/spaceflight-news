@@ -1,0 +1,9 @@
+.lastElement {
+    height: 1px;
+}
+
+.loaderWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

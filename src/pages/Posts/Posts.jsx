@@ -13,11 +13,14 @@ import Pagination from "../../components/UI/pagination/Pagination";
 import {useObserver} from "../../hooks/useObserver";
 import MyInput from "../../components/UI/input/MyInput";
 import styles from './Posts.module.css';
+import AddPostButton from "../../components/AddPostButton/AddPostButton";
+import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
+import Content from "../../components/Content/Content";
+import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
 
 function Posts() {
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: 'default', query: ''});
-    const [modal, setModal] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [limit, setLimit] = useState(5);
     const [page, setPage] = useState(1);
@@ -47,64 +50,40 @@ function Posts() {
 
     const createPost = (newPost) => {
         setPosts([newPost, ...posts]);
-        setModal(false);
     }
 
     const removePost = (post) => {
         setPosts(posts.filter(p => p.id !== post.id));
     }
 
-    const changePage = (page) => {
-        setPage(page);
-    }
-
     return (
         <>
-            <div className={styles.posts}>
-                <MyModal visible={modal} setVisible={setModal}>
-                    <PostForm create={createPost}/>
-                </MyModal>
-                <div className={styles.content}>
-                    <div className={styles.search}>
-                        <MyInput
-                            value={filter.query}
-                            onChange={e => setFilter({...filter, query: e.target.value})}
-                            placeholder='Поиск...'
-                        />
-                        <MyButton onClick={() => setModal(true)} >
-                            Создать пост
-                        </MyButton>
-                    </div>
-                    {postError &&
-                    <h1>Произошла ошибка ${postError}</h1>
-                    }
-                    <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
-                    <div ref={lastElement} className={styles.lastElement}/>
-                    { !isAutoLoading &&
-                    <Pagination
-                        changePage={changePage}
-                        page={page}
-                        totalPages={totalPages}
-                    />
-                    }
-
-                    { isPostsLoading &&
-                    <div style={{display:"flex", justifyContent: 'center', marginTop: 50}}><Loader/></div>
-                    }
-                </div>
-            </div>
-            <div className={styles.filter + " sidebar"}>
-                <PostFilter
+            <div className={styles.mainContent}>
+                <SearchAndButton
                     filter={filter}
                     setFilter={setFilter}
-                    limit={limit}
-                    setLimit={setLimit}
+                    createPost={createPost}
                 />
-                <div className={styles.checkboxWrapper}>
-                    <input className={styles.checkbox} type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                    <label className={styles.checkboxLabel} htmlFor='autoLoading'>Бесконечная лента</label>
-                </div>
+                <Content
+                    sortedAndSearchedPosts={sortedAndSearchedPosts}
+                    postError={postError}
+                    removePost={removePost}
+                    lastElement={lastElement}
+                    isAutoLoading={isAutoLoading}
+                    page={page}
+                    setPage={setPage}
+                    totalPages={totalPages}
+                    isPostsLoading={isPostsLoading}
+                />
             </div>
+            <FilterSideBar
+                filter={filter}
+                setFilter={setFilter}
+                limit={limit}
+                setLimit={setLimit}
+                isAutoLoading={isAutoLoading}
+                setIsAutoLoading={setIsAutoLoading}
+            />
         </>
     );
 }
