@@ -1,11 +1,21 @@
 import React from 'react';
-import styles from "../../FilterSideBar/FilterSideBar.module.css";
+import styles from "./Checkbox.module.css";
 
-const Checkbox = () => {
+const Checkbox = ({id, onChange, title}) => {
     return (
-        <div>
-            <input className={styles.checkbox} type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-            <label className={styles.checkboxLabel} htmlFor='autoLoading'>Бесконечная лента</label>
+        <div className={styles.checkboxWrapper}>
+            <input
+                className={styles.checkbox}
+                type='checkbox'
+                id={id}
+                onChange={onChange}
+            />
+            <label
+                className={styles.checkboxLabel}
+                htmlFor={id}
+            >
+                {title}
+            </label>
         </div>
     );
 };

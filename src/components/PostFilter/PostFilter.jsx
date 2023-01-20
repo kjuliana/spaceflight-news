@@ -7,7 +7,7 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
             <MyRadio
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                defaultValue='Сортировка по'
+                title='Сортировка по'
                 options={[
                     {value: 'default', name: 'По умолчанию'},
                     {value: 'title', name: 'По названию'},
@@ -17,7 +17,7 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
             <MyRadio
                 value={limit}
                 onChange={value => setLimit(value)}
-                defaultValue='Постов на странице'
+                title='Постов на странице'
                 options={[
                     {value: 5, name:'5'},
                     {value: 10, name:'10'},

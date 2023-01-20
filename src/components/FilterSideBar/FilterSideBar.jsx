@@ -1,6 +1,7 @@
 import React from 'react';
 import PostFilter from "../PostFilter/PostFilter";
 import styles from "./FilterSideBar.module.css";
+import Checkbox from "../UI/checkbox/Checkbox";
 
 const FilterSideBar = ({filter, setFilter, limit, setLimit, setIsAutoLoading, isAutoLoading}) => {
     return (
@@ -11,10 +12,11 @@ const FilterSideBar = ({filter, setFilter, limit, setLimit, setIsAutoLoading, is
                 limit={limit}
                 setLimit={setLimit}
             />
-            <div className={styles.checkboxWrapper}>
-                <input className={styles.checkbox} type='checkbox' id='autoLoading' onChange={() => setIsAutoLoading(!isAutoLoading)}/>
-                <label className={styles.checkboxLabel} htmlFor='autoLoading'>Бесконечная лента</label>
-            </div>
+            <Checkbox
+                id='autoLoading'
+                onChange={() => setIsAutoLoading(!isAutoLoading)}
+                title='Бесконечная лента'
+            />
         </div>
     );
 };
