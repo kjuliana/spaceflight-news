@@ -75,3 +75,7 @@
 .checkbox:checked + .checkboxLabel:after {
     opacity: 1;
 }
+
+.lastElement {
+    height: 1px;
+}

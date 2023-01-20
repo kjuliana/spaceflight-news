@@ -79,7 +79,7 @@ function Posts() {
                     <h1>Произошла ошибка ${postError}</h1>
                     }
                     <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
-                    <div ref={lastElement} style={{height: 1}}/>
+                    <div ref={lastElement} className={styles.lastElement}/>
                     { !isAutoLoading &&
                     <Pagination
                         changePage={changePage}
