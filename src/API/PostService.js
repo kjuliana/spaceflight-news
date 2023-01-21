@@ -1,7 +1,12 @@
 import axios from "axios";
 
 export default class PostService {
-    static async getAll(limit = 10, page = 1) {
+    static async getAll() {
+        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles');
+        return response;
+    }
+
+    static async getAllForPage(limit = 10, page = 1) {
         const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
             params: {
                 _limit: limit,
