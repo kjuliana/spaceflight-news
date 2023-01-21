@@ -3,9 +3,19 @@ import {getPagesArray} from "../../../utils/page";
 import styles from './Pagination.module.css';
 
 const Pagination = ({totalPages, page, changePage}) => {
-    const pagesArray = getPagesArray(totalPages);
+    const pagesArray = getPagesArray(page, totalPages);
     return (
         <div className={styles.root}>
+            <span
+                onClick={() => changePage(1)}
+                key={1}
+                className={page === 1 ?  styles.page + ' ' + styles.page__current : styles.page}
+            >
+                {1}
+            </span>
+            {(page > 7) &&
+                <span>...</span>
+            }
             {pagesArray.map((p) =>
                 <span
                     onClick={() => changePage(p)}
@@ -15,6 +25,16 @@ const Pagination = ({totalPages, page, changePage}) => {
                     {p}
                 </span>
             )}
+            {(page < totalPages - 4) &&
+                <span>...</span>
+            }
+            <span
+                onClick={() => changePage(totalPages)}
+                key={totalPages}
+                className={page === totalPages ?  styles.page + ' ' + styles.page__current : styles.page}
+            >
+                {totalPages}
+            </span>
         </div>
     );
 };

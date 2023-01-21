@@ -6,7 +6,7 @@ export default class PostService {
         return response;
     }
 
-    static async getAllForPage(limit = 10, page = 1) {
+    static async getPage(limit = 10, page = 1) {
         const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
             params: {
                 _limit: limit,

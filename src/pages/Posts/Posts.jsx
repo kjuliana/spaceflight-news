@@ -21,7 +21,7 @@ function Posts() {
     const lastElement = useRef();
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading) => {
-        const response = await PostService.getAllForPage(limit, page);
+        const response = await PostService.getPage(limit, page);
         const responseTotal = await PostService.getCount();
         if (isAutoLoading) {
             setPosts([...posts, ...response.data]);
