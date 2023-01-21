@@ -12,7 +12,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className={styles.root + ' sidebar'}>
+        <div className={styles.root}>
             <div className={styles.items}>
                 <Link className={styles.item} to="/">Главная</Link>
                 <Link className={styles.item} to="/about">О приложении</Link>

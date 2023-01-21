@@ -5,7 +5,7 @@ import Checkbox from "../UI/checkbox/Checkbox";
 
 const FilterSideBar = ({filter, setFilter, limit, setLimit, setIsAutoLoading, isAutoLoading}) => {
     return (
-        <div className={styles.filter + " sidebar"}>
+        <div className={styles.filter}>
             <PostFilter
                 filter={filter}
                 setFilter={setFilter}

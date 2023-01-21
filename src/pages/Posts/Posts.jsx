@@ -8,6 +8,7 @@ import styles from './Posts.module.css';
 import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
 import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
+import SideBar from "../../components/SideBar/SideBar";
 
 function Posts() {
     const [posts, setPosts] = useState([])
@@ -67,14 +68,16 @@ function Posts() {
                     isPostsLoading={isPostsLoading}
                 />
             </div>
-            <FilterSideBar
-                filter={filter}
-                setFilter={setFilter}
-                limit={limit}
-                setLimit={setLimit}
-                isAutoLoading={isAutoLoading}
-                setIsAutoLoading={setIsAutoLoading}
-            />
+            <SideBar>
+                <FilterSideBar
+                    filter={filter}
+                    setFilter={setFilter}
+                    limit={limit}
+                    setLimit={setLimit}
+                    isAutoLoading={isAutoLoading}
+                    setIsAutoLoading={setIsAutoLoading}
+                />
+            </SideBar>
         </>
     );
 }

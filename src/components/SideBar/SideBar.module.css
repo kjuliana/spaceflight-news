@@ -1,0 +1,6 @@
+.root {
+    padding: 2em;
+    position: sticky;
+    top: 0;
+    flex: 0 0 21%;
+}

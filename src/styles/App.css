@@ -22,10 +22,3 @@
     margin: auto;
 }
 
-.sidebar {
-    width: 25%;
-    padding: 2em;
-    position: sticky;
-    top: 0;
-    max-width: 25%;
-}
