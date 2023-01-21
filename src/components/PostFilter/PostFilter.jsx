@@ -10,8 +10,8 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
                 title='Сортировка по'
                 options={[
                     {value: 'default', name: 'По умолчанию'},
-                    {value: 'title', name: 'По названию'},
-                    {value: 'body', name: 'По описанию'}
+                    {value: 'title', name: 'По названию статьи'},
+                    {value: 'publishedAt', name: 'По дате (сначала старые)'}
                 ]}
             />
             <MyRadio

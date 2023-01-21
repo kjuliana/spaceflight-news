@@ -31,3 +31,20 @@
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;
 }
+
+.image {
+    width: 100%;
+    border-radius: 1em;
+    border: 1px solid var(--support-color);
+    margin-top: 1em;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.date {
+    color: var(--support-color);
+}

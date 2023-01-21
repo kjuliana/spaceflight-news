@@ -8,21 +8,31 @@ import styles from './PostIdPage.module.css';
 const PostIdPage = () => {
     const {postId} = useParams();
     const [post, setPost] = useState({});
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState([]);
 
     const [fetchPostById, isLoading, error] = useFetching(async (id) => {
         const response = await PostService.getById(id);
         setPost(response.data);
     });
-    const [fetchComments, isComLoading, comError] = useFetching(async (id) => {
-        const response = await PostService.getCommentsByPostId(id);
-        setComments(response.data.comments);
-    });
+
+    // const [fetchComments, isComLoading, comError] = useFetching(async (id) => {
+    //     const response = await PostService.getCommentsByPostId(id);
+    //     setComments(response.data.comments);
+    // });
 
     useEffect(() => {
         fetchPostById(postId);
-        fetchComments(postId);
+        // fetchComments(postId);
     }, [])
+
+    const date = new Date(post.publishedAt);
+    const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+    };
 
     return (
         <>
@@ -31,22 +41,27 @@ const PostIdPage = () => {
                     ? <Loader/>
                     : <div className={styles.root}>
                         <div className={styles.content}>
-                            <h1>{post.id}. {post.title}</h1>
-                            <p>{post.body}</p>
+                            <h1>{post.title}</h1>
+                            <p>{post.summary}</p>
+                            <img className={styles.image} src={post.imageUrl}/>
                         </div>
-                        <div className={styles.comments}>
-                            <h3>Комментарии</h3>
-                            {isComLoading
-                                ? <Loader/>
-                                : <div>{comments.map(comm =>
-                                    <div className={styles.comment} key={comm.id}>
-                                        <h5>@{comm.user.username} </h5>
-                                        <p> {comm.body} </p>
-                                    </div>
-                                )}
-                                </div>
-                            }
+                        <div className={styles.info}>
+                            <span><strong>@{post.newsSite}</strong></span>
+                            <span className={styles.date}>{date.toLocaleString("ru", options)} </span>
                         </div>
+                        {/*<div className={styles.comments}>*/}
+                        {/*    <h3>Комментарии</h3>*/}
+                        {/*    {isComLoading*/}
+                        {/*        ? <Loader/>*/}
+                        {/*        : <div>{comments.map(comm =>*/}
+                        {/*            <div className={styles.comment} key={comm.id}>*/}
+                        {/*                <h5>@{comm.user.username} </h5>*/}
+                        {/*                <p> {comm.body} </p>*/}
+                        {/*            </div>*/}
+                        {/*        )}*/}
+                        {/*        </div>*/}
+                        {/*    }*/}
+                        {/*</div>*/}
                     </div>
             }
         </>

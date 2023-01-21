@@ -17,3 +17,20 @@
     border-left: 4px solid var(--main-color);
     padding-left: 2%;
 }
+
+.image {
+    width: 100%;
+    border-radius: 1em;
+    border: 1px solid var(--support-color);
+    margin-top: 1em;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.date {
+    color: var(--support-color);
+}
