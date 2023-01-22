@@ -11,13 +11,13 @@ export const getPagesArray = (page, totalPages) => {
         return result;
     }
     if (page > totalPages - 5) {
-        for (let i = totalPages; i > totalPages - 11; i--) {
+        for (let i = totalPages-1; i > totalPages - 11; i--) {
             result.unshift(i);
         }
         return result;
     }
 
-    for (let i = page - 6; i < page + 4; i++) {
+    for (let i = page - 5; i < page + 5; i++) {
         result.push(i);
     }
     return result;

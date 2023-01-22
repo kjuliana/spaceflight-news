@@ -14,7 +14,7 @@ const Pagination = ({totalPages, page, changePage}) => {
                 {1}
             </span>
             {(page > 7) &&
-                <span>...</span>
+                <p>🚀</p>
             }
             {pagesArray.map((p) =>
                 <span
@@ -26,7 +26,7 @@ const Pagination = ({totalPages, page, changePage}) => {
                 </span>
             )}
             {(page < totalPages - 4) &&
-                <span>...</span>
+                <p>🚀</p>
             }
             <span
                 onClick={() => changePage(totalPages)}
