@@ -25,7 +25,7 @@ const Pagination = ({totalPages, page, changePage}) => {
                     {p}
                 </span>
             )}
-            {(page < totalPages - 4) &&
+            {(page < totalPages - 5) &&
                 <p>🚀</p>
             }
             <span
