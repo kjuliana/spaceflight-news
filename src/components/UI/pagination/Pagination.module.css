@@ -17,3 +17,10 @@
     border-bottom: 1px solid var(--hover-button);
     font-weight: bold;
 }
+
+.ellipsis {
+    text-align: center;
+    padding: 5px;
+    min-width: 40px;
+    color: black;
+}

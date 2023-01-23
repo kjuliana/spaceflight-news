@@ -1,8 +1,12 @@
 import axios from "axios";
 
 export default class PostService {
-    static async getAll() {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles');
+    static async getSortedAll(sort='') {
+        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
+            params: {
+                _sort: sort,
+            }
+        });
         return response;
     }
 

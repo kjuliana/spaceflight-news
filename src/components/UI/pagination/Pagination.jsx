@@ -14,7 +14,7 @@ const Pagination = ({totalPages, page, changePage}) => {
                 {1}
             </span>
             {(page > 7) &&
-                <p className={styles.page}>🚀</p>
+                <p className={styles.ellipsis}>…</p>
             }
             {pagesArray.map((p) =>
                 <span
@@ -26,7 +26,7 @@ const Pagination = ({totalPages, page, changePage}) => {
                 </span>
             )}
             {(page < totalPages - 5) &&
-                <p className={styles.page}>🚀</p>
+                <p className={styles.ellipsis}>…</p>
             }
             <span
                 onClick={() => changePage(totalPages)}
