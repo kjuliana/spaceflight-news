@@ -11,9 +11,9 @@ const Pagination = ({totalPages, page, changePage}) => {
                 key={1}
                 className={page === 1 ?  styles.page + ' ' + styles.page__current : styles.page}
             >
-                {1}
+                1
             </span>
-            {(page > 7) &&
+            {(page > 7 && totalPages > 10) &&
                 <p className={styles.ellipsis}>…</p>
             }
             {pagesArray.map((p) =>
@@ -25,16 +25,17 @@ const Pagination = ({totalPages, page, changePage}) => {
                     {p}
                 </span>
             )}
-            {(page < totalPages - 5) &&
+            {(page < totalPages - 5 && totalPages > 10) &&
                 <p className={styles.ellipsis}>…</p>
             }
+            {totalPages > 1 &&
             <span
                 onClick={() => changePage(totalPages)}
                 key={totalPages}
-                className={page === totalPages ?  styles.page + ' ' + styles.page__current : styles.page}
+                className={page === totalPages ? styles.page + ' ' + styles.page__current : styles.page}
             >
                 {totalPages}
-            </span>
+            </span>}
         </div>
     );
 };

@@ -21,15 +21,13 @@ function Posts() {
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await PostService.getPage(limit, page, sort, search);
-        const responseTotalCount = await PostService.getTotalCount();
-        const responseFilteredCount = await PostService.getFilteredCount(sort, search, responseTotalCount);
+        const responseCount = await PostService.getCount(search);
         if (isAutoLoading) {
             setPosts([...posts, ...response.data]);
         } else {
             setPosts(response.data);
         }
-        const totalCount = responseFilteredCount;
-        setTotalPages(getPagesCount(totalCount, limit));
+        setTotalPages(getPagesCount(responseCount, limit));
     });
 
     useObserver(lastElement, page <= totalPages,isAutoLoading && !isPostsLoading, () => {

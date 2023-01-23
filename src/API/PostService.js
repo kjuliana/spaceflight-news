@@ -13,20 +13,13 @@ export default class PostService {
         return response;
     }
 
-    static async getTotalCount() {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles/count');
-        return response.data;
-    }
-
-    static async getFilteredCount(sort, search, limit) {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
+    static async getCount(search) {
+        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles/count', {
             params: {
-                _limit: limit,
                 _title_contains: search,
-                _sort: sort
             }
         });
-        return response.data.length;
+        return response.data;
     }
 
     static async getById(id) {
