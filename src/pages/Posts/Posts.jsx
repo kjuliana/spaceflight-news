@@ -12,23 +12,23 @@ import SideBar from "../../components/SideBar/SideBar";
 
 function Posts() {
     const [posts, setPosts] = useState([])
-    const [filter, setFilter] = useState({sort: 'default', query: ''});
+    const [filter, setFilter] = useState({sort: 'publishedAt:desc', query: ''});
     const [totalPages, setTotalPages] = useState(0);
     const [limit, setLimit] = useState(5);
     const [page, setPage] = useState(1);
     const [isAutoLoading, setIsAutoLoading] = useState(false);
-    const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
     const lastElement = useRef();
 
-    const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading) => {
-        const response = await PostService.getPage(limit, page);
-        const responseTotal = await PostService.getCount();
+    const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
+        const response = await PostService.getPage(limit, page, sort, search);
+        const responseTotalCount = await PostService.getTotalCount();
+        const responseFilteredCount = await PostService.getFilteredCount(sort, search, responseTotalCount);
         if (isAutoLoading) {
             setPosts([...posts, ...response.data]);
         } else {
             setPosts(response.data);
         }
-        const totalCount = responseTotal.data;
+        const totalCount = responseFilteredCount;
         setTotalPages(getPagesCount(totalCount, limit));
     });
 
@@ -37,8 +37,8 @@ function Posts() {
     });
 
     useEffect(() => {
-        fetchPosts(limit, page, isAutoLoading);
-    }, [page, limit])
+        fetchPosts(limit, page, isAutoLoading, filter.sort, filter.query);
+    }, [page, limit, filter])
 
     const createPost = (newPost) => {
         setPosts([newPost, ...posts]);
@@ -57,7 +57,7 @@ function Posts() {
                     createPost={createPost}
                 />
                 <Content
-                    sortedAndSearchedPosts={sortedAndSearchedPosts}
+                    sortedAndSearchedPosts={posts}
                     postError={postError}
                     removePost={removePost}
                     lastElement={lastElement}

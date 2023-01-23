@@ -1,18 +1,11 @@
 import axios from "axios";
 
 export default class PostService {
-    static async getSortedAll(sort='') {
+    static async getPage(limit = 10, page = 1, sort = '', search = '') {
         const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
             params: {
+                _title_contains: search,
                 _sort: sort,
-            }
-        });
-        return response;
-    }
-
-    static async getPage(limit = 10, page = 1) {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
-            params: {
                 _limit: limit,
                 _start: limit === 'Infinity' ? 0 : (page - 1) * limit
             }
@@ -20,18 +13,24 @@ export default class PostService {
         return response;
     }
 
-    static async getCount() {
+    static async getTotalCount() {
         const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles/count');
-        return response;
+        return response.data;
+    }
+
+    static async getFilteredCount(sort, search, limit) {
+        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
+            params: {
+                _limit: limit,
+                _title_contains: search,
+                _sort: sort
+            }
+        });
+        return response.data.length;
     }
 
     static async getById(id) {
         const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles/' + id);
         return response;
     }
-
-    // static async getCommentsByPostId(id) {
-    //     const response = await axios.get('https://dummyjson.com/posts/' + id + '/comments');
-    //     return response;
-    // }
 }
