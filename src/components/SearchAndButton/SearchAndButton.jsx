@@ -9,7 +9,7 @@ const SearchAndButton = ({filter, setFilter, createPost}) => {
             <MyInput
                 value={filter.query}
                 onChange={e => setFilter({...filter, query: e.target.value})}
-                placeholder='Поиск...'
+                placeholder='Search...'
             />
             <AddPostButton createPost={createPost}/>
         </div>

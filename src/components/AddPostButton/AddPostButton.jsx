@@ -14,7 +14,7 @@ const AddPostButton = ({createPost}) => {
     return (
         <>
             <MyButton onClick={() => setModal(true)} >
-                Создать пост
+                Create post
             </MyButton>
             <MyModal visible={modal} setVisible={setModal}>
                 <PostForm create={create}/>

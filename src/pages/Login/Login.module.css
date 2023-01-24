@@ -1,9 +1,10 @@
 .root {
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    min-width: 30%;
 }
 
 .form {

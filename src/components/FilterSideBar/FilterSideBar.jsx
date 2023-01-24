@@ -15,7 +15,7 @@ const FilterSideBar = ({filter, setFilter, limit, setLimit, setIsAutoLoading, is
             <Checkbox
                 id='autoLoading'
                 onChange={() => setIsAutoLoading(!isAutoLoading)}
-                title='Бесконечная лента'
+                title='Infinite feed'
             />
         </div>
     );

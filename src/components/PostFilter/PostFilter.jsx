@@ -7,23 +7,23 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
             <MyRadio
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                title='Сортировка по'
+                title='Sort by'
                 options={[
-                    {value: 'publishedAt:desc', name: 'По дате(сначала новые)'},
-                    {value: 'publishedAt', name: 'По дате(сначала старые)'},
-                    {value: 'newsSite', name: 'По источнику'},
-                    {value: 'title', name: 'По названию статьи'}
+                    {value: 'publishedAt:desc', name: 'Newest to Oldest'},
+                    {value: 'publishedAt', name: 'Oldest to Newest'},
+                    {value: 'newsSite', name: 'News site'},
+                    {value: 'title', name: 'Title'}
                 ]}
             />
             <MyRadio
                 value={limit}
                 onChange={value => setLimit(value)}
-                title='Постов на странице'
+                title='News per page'
                 options={[
                     {value: 5, name:'5'},
-                    {value: 10, name:'10'},
                     {value: 25, name:'25'},
-                    {value: Infinity, name:'Показать все'},
+                    {value: 50, name:'50'},
+                    {value: Infinity, name:'Show All'},
                 ]}
             />
         </div>

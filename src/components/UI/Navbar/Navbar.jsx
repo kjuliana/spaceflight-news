@@ -14,11 +14,11 @@ const Navbar = () => {
     return (
         <div className={styles.root}>
             <div className={styles.items}>
-                <Link className={styles.item} to="/">Главная</Link>
-                <Link className={styles.item} to="/about">О приложении</Link>
-                <Link className={styles.item} to="/posts">Блог</Link>
+                <Link className={styles.item} to="/">Main</Link>
+                <Link className={styles.item} to="/about">About</Link>
+                <Link className={styles.item} to="/posts">News</Link>
                 <button className={styles.item} onClick={logout}>
-                    Выйти
+                    Log Out
                 </button>
             </div>
         </div>
