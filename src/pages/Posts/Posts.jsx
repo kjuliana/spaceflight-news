@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import PostService from "../../API/PostService";
+import ArticleService from "../../API/ArticleService";
 import {useFetching} from "../../hooks/useFetching";
 import {getPagesCount} from "../../utils/page";
 import {useObserver} from "../../hooks/useObserver";
@@ -9,7 +9,7 @@ import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
 
-function Posts() {
+function Posts({service, type}) {
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: 'publishedAt:desc', query: ''});
     const [totalPages, setTotalPages] = useState(0);
@@ -21,8 +21,8 @@ function Posts() {
     const [hiddenContent, setHiddenContent] = useState(false);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
-        const response = await PostService.getPage(limit, page, sort, search);
-        const responseCount = await PostService.getCount(search);
+        const response = await service.getPage(limit, page, sort, search);
+        const responseCount = await service.getCount(search);
         if (isAutoLoading) {
             setPosts([...posts, ...response.data]);
         } else {
@@ -52,16 +52,15 @@ function Posts() {
         <>
             <div className={styles.mainContent}>
                 <SearchAndButton
-                    filter={filter}
-                    setFilter={setFilter}
+                    searchQuery={filter.query}
+                    onSearchQueryChange={query => setFilter({...filter, query})}
                     createPost={createPost}
-                    hiddenContent={hiddenContent}
-                    setHiddenContent={setHiddenContent}
+                    onBurgerClick={() => setHiddenContent(!hiddenContent)}
                 />
-                <div hidden={hiddenContent}>
+                {!hiddenContent && (
                     <Content
-                        sortedAndSearchedPosts={posts}
-                        postError={postError}
+                        posts={posts}
+                        error={postError}
                         removePost={removePost}
                         lastElement={lastElement}
                         isAutoLoading={isAutoLoading}
@@ -69,8 +68,9 @@ function Posts() {
                         setPage={setPage}
                         totalPages={totalPages}
                         isPostsLoading={isPostsLoading}
+                        type={type}
                     />
-                </div>
+                )}
             </div>
             <SideBar>
                 <FilterSideBar

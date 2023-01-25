@@ -8,6 +8,8 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import PostIdPage from "./pages/PostIdPage/PostIdPage";
 import Login from "./pages/Login/Login";
 import {AuthContext} from "./context";
+import ArticleService from "./API/ArticleService";
+import BlogService from "./API/BlogService";
 
 const privateRouter = createBrowserRouter([
     {
@@ -21,11 +23,19 @@ const privateRouter = createBrowserRouter([
             },
             {
                 path: "/posts",
-                element: <Posts/>,
+                element: <Posts service={ArticleService} type='posts'/>,
             },
             {
                 path: "/posts/:postId",
-                element: <PostIdPage/>,
+                element: <PostIdPage service={ArticleService}/>,
+            },
+            {
+                path: "/blog",
+                element: <Posts service={BlogService} type='blog'/>,
+            },
+            {
+                path: "/blog/:postId",
+                element: <PostIdPage service={BlogService}/>,
             },
             {
                 path: "/login",

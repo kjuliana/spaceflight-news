@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Burger.module.css';
 
-const Burger = ({hiddenContent, setHiddenContent}) => {
+const Burger = ({onClick}) => {
     return (
-        <button onClick={() => {setHiddenContent(!hiddenContent)}} className={styles.root}>
+        <button onClick={onClick} className={styles.root}>
             <span className={styles.span}/>
         </button>
     );

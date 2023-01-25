@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export default class PostService {
+export default class ArticleService {
     static async getPage(limit = 10, page = 1, sort = '', search = '') {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
+        return await axios.get('https://api.spaceflightnewsapi.net/v3/articles', {
             params: {
                 _title_contains: search,
                 _sort: sort,
@@ -10,7 +10,6 @@ export default class PostService {
                 _start: limit === 'Infinity' ? 0 : (page - 1) * limit
             }
         });
-        return response;
     }
 
     static async getCount(search) {
@@ -23,7 +22,6 @@ export default class PostService {
     }
 
     static async getById(id) {
-        const response = await axios.get('https://api.spaceflightnewsapi.net/v3/articles/' + id);
-        return response;
+        return await axios.get('https://api.spaceflightnewsapi.net/v3/articles/' + id);
     }
 }

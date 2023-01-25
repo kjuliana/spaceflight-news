@@ -1,28 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
-import PostService from "../../API/PostService";
 import Loader from "../../components/UI/Loader/Loader";
 import styles from './PostIdPage.module.css';
 
-const PostIdPage = () => {
+const PostIdPage = ({service}) => {
     const {postId} = useParams();
     const [post, setPost] = useState({});
-    // const [comments, setComments] = useState([]);
 
     const [fetchPostById, isLoading, error] = useFetching(async (id) => {
-        const response = await PostService.getById(id);
+        const response = await service.getById(id);
         setPost(response.data);
     });
 
-    // const [fetchComments, isComLoading, comError] = useFetching(async (id) => {
-    //     const response = await PostService.getCommentsByPostId(id);
-    //     setComments(response.data.comments);
-    // });
-
     useEffect(() => {
         fetchPostById(postId);
-        // fetchComments(postId);
     }, [])
 
     const date = new Date(post.publishedAt);
@@ -33,6 +25,8 @@ const PostIdPage = () => {
         hour: 'numeric',
         minute: 'numeric'
     };
+
+    console.log(post);
 
     return (
         <>
@@ -49,19 +43,6 @@ const PostIdPage = () => {
                             <span><strong>@{post.newsSite}</strong></span>
                             <span className={styles.date}>{date.toLocaleString("ru", options)} </span>
                         </div>
-                        {/*<div className={styles.comments}>*/}
-                        {/*    <h3>Комментарии</h3>*/}
-                        {/*    {isComLoading*/}
-                        {/*        ? <Loader/>*/}
-                        {/*        : <div>{comments.map(comm =>*/}
-                        {/*            <div className={styles.comment} key={comm.id}>*/}
-                        {/*                <h5>@{comm.user.username} </h5>*/}
-                        {/*                <p> {comm.body} </p>*/}
-                        {/*            </div>*/}
-                        {/*        )}*/}
-                        {/*        </div>*/}
-                        {/*    }*/}
-                        {/*</div>*/}
                     </div>
             }
         </>

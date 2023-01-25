@@ -13,3 +13,7 @@
 .lastElement {
     height: 1px;
 }
+
+.hidden {
+    display: none;
+}

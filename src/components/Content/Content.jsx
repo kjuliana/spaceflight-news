@@ -4,18 +4,18 @@ import styles from "./Content.module.css";
 import Pagination from "../UI/Pagination/Pagination";
 import Loader from "../UI/Loader/Loader";
 
-const Content = ({sortedAndSearchedPosts, postError, removePost, lastElement, isAutoLoading, totalPages, page, setPage, isPostsLoading}) => {
+const Content = ({posts, error, removePost, lastElement, isAutoLoading, totalPages, page, setPage, isPostsLoading, type}) => {
     const changePage = (page) => {
         setPage(page);
     };
 
     return (
         <>
-            {postError &&
-            <h1>Произошла ошибка ${postError}</h1>
+            {error &&
+                <h1>Произошла ошибка ${error}</h1>
             }
 
-            <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
+            <PostList type={type} posts={posts} remove={removePost}/>
             <div ref={lastElement} className={styles.lastElement}/>
 
             {!isAutoLoading &&

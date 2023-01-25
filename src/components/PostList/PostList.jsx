@@ -1,10 +1,10 @@
 import React from 'react';
 import PostItem from "../PostItem/PostItem";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
-import styles from '../PostItem/PostItem.module.css';
-import styless from './PostList.module.css'
+import itemStyles from '../PostItem/PostItem.module.css';
+import styles from './PostList.module.css'
 
-const PostList = ({posts, remove}) => {
+const PostList = ({posts, remove, type}) => {
     if (!posts.length) {
         return (
             <h1 style={{textAlign: 'center'}}>
@@ -13,15 +13,15 @@ const PostList = ({posts, remove}) => {
         )
     }
     return (
-        <div className={styless.root}>
+        <div className={styles.root}>
             <TransitionGroup>
                 {posts.map((post, index) =>
                     <CSSTransition
                         key={post.id}
                         timeout={500}
-                        classNames={styles}
+                        classNames={itemStyles}
                     >
-                        <PostItem remove={remove} number={index + 1} post={post}/>
+                        <PostItem type={type} remove={remove} number={index + 1} post={post}/>
                     </CSSTransition>
                 )}
             </TransitionGroup>
