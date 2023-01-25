@@ -14,7 +14,7 @@
 
 .span {
     position: absolute;
-    background-color: green;
+    background-color: var(--main-color);
     width: 100%;
     height: 2px;
     top: 11px;
@@ -31,7 +31,7 @@
 
 .root:before, .root:after {
     content: '';
-    background-color: green;
+    background-color: var(--main-color);
     position: absolute;
     width: 100%;
     height: 2px;

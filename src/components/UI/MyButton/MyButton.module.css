@@ -1,7 +1,7 @@
 .root{
     border: none;
     padding: 5px 15px;
-    color: var(--main-pink);
+    height: 100%;
     font-size: 14px;
     background: transparent;
     cursor: pointer;

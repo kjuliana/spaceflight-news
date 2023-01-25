@@ -2,6 +2,7 @@ import React from 'react';
 import MyInput from "../UI/MyInput/MyInput";
 import AddPostButton from "../AddPostButton/AddPostButton";
 import styles from './SearchAndButton.module.css';
+import Burger from "../UI/Burger/Burger";
 
 const SearchAndButton = ({filter, setFilter, createPost}) => {
     return (
@@ -13,6 +14,7 @@ const SearchAndButton = ({filter, setFilter, createPost}) => {
                 placeholder='Search...'
             />
             <AddPostButton createPost={createPost}/>
+            <Burger/>
         </div>
     );
 };

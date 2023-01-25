@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../../context";
 import styles from './Navbar.module.css';
-import Burger from "../Burger/Burger";
 
 const Navbar = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
@@ -14,7 +13,6 @@ const Navbar = () => {
 
     return (
         <div className={styles.root}>
-            <Burger/>
             <div className={styles.items}>
                 <Link className={styles.item} to="/">Main</Link>
                 <Link className={styles.item} to="/posts">News</Link>
