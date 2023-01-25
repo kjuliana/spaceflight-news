@@ -3,7 +3,7 @@ import PostFilter from "../PostFilter/PostFilter";
 import styles from "./FilterSideBar.module.css";
 import Checkbox from "../UI/Checkbox/Checkbox";
 
-const FilterSideBar = ({filter, setFilter, limit, setLimit, count, setIsAutoLoading, isAutoLoading}) => {
+const FilterSideBar = ({filter, setFilter, limit, setLimit, setIsAutoLoading, isAutoLoading}) => {
     return (
         <div className={styles.filter}>
             <PostFilter
@@ -11,7 +11,6 @@ const FilterSideBar = ({filter, setFilter, limit, setLimit, count, setIsAutoLoad
                 setFilter={setFilter}
                 limit={limit}
                 setLimit={setLimit}
-                count={count}
             />
             <Checkbox
                 id='autoLoading'

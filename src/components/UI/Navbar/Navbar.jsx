@@ -16,11 +16,13 @@ const Navbar = () => {
         <div className={styles.root}>
             <div className={styles.items}>
                 <Link className={styles.item} to="/">Main</Link>
-                <Link className={styles.item} to="/posts">🚀 News</Link>
+                <Link className={styles.item} to="/news">🚀 News</Link>
                 <Link className={styles.item} to="/blog">🌍 Blog</Link>
-                <button className={styles.item} onClick={logout}>
-                    Log Out
-                </button>
+                {isAuth && (
+                    <button className={styles.item} onClick={logout}>
+                        Log Out
+                    </button>
+                )}
             </div>
         </div>
     );

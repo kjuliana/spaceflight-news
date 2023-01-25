@@ -22,16 +22,16 @@ const privateRouter = createBrowserRouter([
                 element: <Main/>,
             },
             {
-                path: "/posts",
-                element: <Posts service={ArticleService} type='posts'/>,
+                path: "/news",
+                element: <Posts service={ArticleService}/>,
             },
             {
-                path: "/posts/:postId",
+                path: "/news/:postId",
                 element: <PostIdPage service={ArticleService}/>,
             },
             {
                 path: "/blog",
-                element: <Posts service={BlogService} type='blog'/>,
+                element: <Posts service={BlogService}/>,
             },
             {
                 path: "/blog/:postId",
@@ -52,13 +52,13 @@ const publicRouter = createBrowserRouter([
         errorElement: <Login/>,
         children: [
             {
-                path: "/about",
-                element: <Main/>,
+                path: "/",
+                element: <Login/>,
             },
             {
-                path: "/posts",
-                element: <Login/>
-            }
+                path: "*",
+                element: <Login/>,
+            },
         ]
     }
 ]);

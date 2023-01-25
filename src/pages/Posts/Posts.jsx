@@ -9,7 +9,7 @@ import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
 
-function Posts({service, type}) {
+function Posts({service}) {
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: 'publishedAt:desc', query: ''});
     const [totalPages, setTotalPages] = useState(0);
@@ -17,7 +17,6 @@ function Posts({service, type}) {
     const [page, setPage] = useState(1);
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
-    const [newsCount, setNewsCount] = useState(0);
     const [hiddenContent, setHiddenContent] = useState(false);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
@@ -28,7 +27,6 @@ function Posts({service, type}) {
         } else {
             setPosts(response.data);
         }
-        setNewsCount(responseCount);
         setTotalPages(getPagesCount(responseCount, limit));
     });
 
@@ -38,7 +36,7 @@ function Posts({service, type}) {
 
     useEffect(() => {
         fetchPosts(limit, page, isAutoLoading, filter.sort, filter.query);
-    }, [page, limit, filter])
+    }, [page, limit, filter, service])
 
     const createPost = (newPost) => {
         setPosts([newPost, ...posts]);
@@ -68,7 +66,6 @@ function Posts({service, type}) {
                         setPage={setPage}
                         totalPages={totalPages}
                         isPostsLoading={isPostsLoading}
-                        type={type}
                     />
                 )}
             </div>
@@ -78,7 +75,6 @@ function Posts({service, type}) {
                     setFilter={setFilter}
                     limit={limit}
                     setLimit={setLimit}
-                    count={newsCount}
                     isAutoLoading={isAutoLoading}
                     setIsAutoLoading={setIsAutoLoading}
                 />

@@ -14,7 +14,7 @@ const PostItem = (props) => {
 
     return (
         <div className={styles.root}>
-            <Link to={"/"+props.type+"/"+props.post.id}>
+            <Link to={'./' + props.post.id}>
                 <div className={styles.info}>
                     <span><strong>@{props.post.newsSite}</strong></span>
                     <span className={styles.date}>{date.toLocaleString("ru", options)} </span>
