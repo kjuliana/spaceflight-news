@@ -1,7 +1,7 @@
 import React from 'react';
-import MyRadio from "../UI/radio/MyRadio";
+import MyRadio from "../UI/MyRadio/MyRadio";
 
-const PostFilter = ({filter, setFilter, limit, setLimit}) => {
+const PostFilter = ({filter, setFilter, limit, setLimit, count}) => {
     return (
         <div>
             <MyRadio
@@ -23,7 +23,7 @@ const PostFilter = ({filter, setFilter, limit, setLimit}) => {
                     {value: 5, name:'5'},
                     {value: 25, name:'25'},
                     {value: 50, name:'50'},
-                    {value: Infinity, name:'Show All'},
+                    {value: count, name:'Show All'},
                 ]}
             />
         </div>

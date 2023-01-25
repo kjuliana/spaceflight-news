@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import MyInput from "../../components/UI/input/MyInput";
-import MyButton from "../../components/UI/button/MyButton";
+import MyInput from "../../components/UI/MyInput/MyInput";
+import MyButton from "../../components/UI/MyButton/MyButton";
 import {AuthContext} from "../../context";
 import styles from './Login.module.css';
 import InputLabel from "../../components/UI/InputLabel/InputLabel";
+import SideBar from "../../components/SideBar/SideBar";
 
 const Login = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Login = () => {
                 <InputLabel label={'password'}>
                     <MyInput type='password' placeholder='Введите пароль' defaultValue='demo'/>
                 </InputLabel>
-                <MyButton>Войти</MyButton>
+                <MyButton>Sign in</MyButton>
             </form>
         </div>
     );

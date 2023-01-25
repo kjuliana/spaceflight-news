@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PostList from "../PostList/PostList";
 import styles from "./Content.module.css";
-import Pagination from "../UI/pagination/Pagination";
+import Pagination from "../UI/Pagination/Pagination";
 import Loader from "../UI/Loader/Loader";
 
 const Content = ({sortedAndSearchedPosts, postError, removePost, lastElement, isAutoLoading, totalPages, page, setPage, isPostsLoading}) => {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PostForm from "../PostForm/PostForm";
 import MyModal from "../UI/MyModal/MyModal";
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../UI/MyButton/MyButton";
 
 const AddPostButton = ({createPost}) => {
     const [modal, setModal] = useState(false);

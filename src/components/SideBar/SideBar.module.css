@@ -4,3 +4,9 @@
     top: 0;
     flex: 0 0 21%;
 }
+
+@media (max-width: 767px) {
+    .root {
+        display: none;
+    }
+}

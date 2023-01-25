@@ -39,11 +39,17 @@ const publicRouter = createBrowserRouter([
     {
         path: "/",
         element: <Main/>,
-        errorElement: <Login/>
-    },
-    {
-        path: "/:",
-        element: <Login/>
+        errorElement: <Login/>,
+        children: [
+            {
+                path: "/about",
+                element: <About/>,
+            },
+            {
+                path: "/posts",
+                element: <Login/>
+            }
+        ]
     }
 ]);
 

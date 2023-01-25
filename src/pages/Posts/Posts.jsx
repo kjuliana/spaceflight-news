@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {usePosts} from "../../hooks/usePosts";
 import PostService from "../../API/PostService";
 import {useFetching} from "../../hooks/useFetching";
 import {getPagesCount} from "../../utils/page";
@@ -7,7 +6,7 @@ import {useObserver} from "../../hooks/useObserver";
 import styles from './Posts.module.css';
 import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
 import Content from "../../components/Content/Content";
-import FilterSideBar from "../../components/FilterSideBar/FilterSideBar";
+import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
 
 function Posts() {
@@ -18,6 +17,7 @@ function Posts() {
     const [page, setPage] = useState(1);
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
+    const [newsCount, setNewsCount] = useState(0);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await PostService.getPage(limit, page, sort, search);
@@ -27,6 +27,7 @@ function Posts() {
         } else {
             setPosts(response.data);
         }
+        setNewsCount(responseCount);
         setTotalPages(getPagesCount(responseCount, limit));
     });
 
@@ -72,6 +73,7 @@ function Posts() {
                     setFilter={setFilter}
                     limit={limit}
                     setLimit={setLimit}
+                    count={newsCount}
                     isAutoLoading={isAutoLoading}
                     setIsAutoLoading={setIsAutoLoading}
                 />

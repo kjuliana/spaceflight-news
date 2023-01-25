@@ -1,7 +1,8 @@
 .search {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: stretch;
     justify-content: space-between;
+    height: 5em;
     padding: 1em;
 }
