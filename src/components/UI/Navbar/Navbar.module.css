@@ -19,6 +19,7 @@
     transition: 0.2s;
     white-space: nowrap;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .item:hover {
@@ -33,11 +34,9 @@
         position: fixed;
         justify-content: flex-start;
         left: 0;
-        top: 0 ;
+        top: 0;
         bottom: 0;
+        padding: 5em 1em;
         width: 100%;
-        background-color: hsla(0, 0%, 96%, 1);
-        transition: 0.3s ease-out;
-        box-shadow: -10px 0 8px -10px hsl(0deg 0% 0% / 25%);
     }
 }

@@ -7,6 +7,10 @@
 
 @media (max-width: 767px) {
     .root {
-        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 }

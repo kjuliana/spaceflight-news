@@ -2,6 +2,8 @@
     flex-grow: 1;
     border-left: 1px solid var(--hover-button);
     border-right: 1px solid var(--hover-button);
+    background-color: white;
+    z-index: 1;
 }
 
 .filter {

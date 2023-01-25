@@ -4,9 +4,9 @@ import AddPostButton from "../AddPostButton/AddPostButton";
 import styles from './SearchAndButton.module.css';
 import Burger from "../UI/Burger/Burger";
 
-const SearchAndButton = ({filter, setFilter, createPost}) => {
+const SearchAndButton = ({filter, setFilter, createPost, hiddenContent, setHiddenContent}) => {
     return (
-        <div className={styles.search}>
+        <div className={styles.root}>
             <MyInput
                 value={filter.query}
                 type='search'
@@ -14,7 +14,10 @@ const SearchAndButton = ({filter, setFilter, createPost}) => {
                 placeholder='Search...'
             />
             <AddPostButton createPost={createPost}/>
-            <Burger/>
+            <Burger
+                hiddenContent={hiddenContent}
+                setHiddenContent={setHiddenContent}
+            />
         </div>
     );
 };

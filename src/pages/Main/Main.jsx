@@ -1,16 +1,11 @@
 import React from 'react';
-import {Outlet} from "react-router-dom";
-import Navbar from "../../components/UI/Navbar/Navbar";
-import SideBar from "../../components/SideBar/SideBar";
+import styles from './Main.module.css';
 
 const Main = () => {
     return (
-        <>
-            <SideBar>
-                <Navbar/>
-            </SideBar>
-            <Outlet/>
-        </>
+        <div className={styles.root}>
+           <h1>Get an overview of the latest Spaceflight news, from various sources!</h1>
+        </div>
     );
 };
 

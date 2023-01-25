@@ -52,3 +52,9 @@
 .checkbox:checked + .checkboxLabel:after {
     opacity: 1;
 }
+
+@media (max-width: 767px) {
+    .checkboxWrapper {
+        display: none;
+    }
+}

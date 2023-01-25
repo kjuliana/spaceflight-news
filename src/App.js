@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './styles/App.css'
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
-import About from "./pages/About/About";
-import Posts from "./pages/Posts/Posts";
 import Main from "./pages/Main/Main";
+import Posts from "./pages/Posts/Posts";
+import Layout from "./components/Layout/Layout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import PostIdPage from "./pages/PostIdPage/PostIdPage";
 import Login from "./pages/Login/Login";
@@ -12,12 +12,12 @@ import {AuthContext} from "./context";
 const privateRouter = createBrowserRouter([
     {
         path: "/",
-        element: <Main/>,
+        element: <Layout/>,
         errorElement: <ErrorPage/>,
         children: [
             {
-                path: "/about",
-                element: <About/>,
+                path: "/",
+                element: <Main/>,
             },
             {
                 path: "/posts",
@@ -38,12 +38,12 @@ const privateRouter = createBrowserRouter([
 const publicRouter = createBrowserRouter([
     {
         path: "/",
-        element: <Main/>,
+        element: <Layout/>,
         errorElement: <Login/>,
         children: [
             {
                 path: "/about",
-                element: <About/>,
+                element: <Main/>,
             },
             {
                 path: "/posts",

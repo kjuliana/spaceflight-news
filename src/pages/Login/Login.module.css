@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     margin: auto;
     min-width: 30%;
 }
@@ -10,6 +10,6 @@
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     width: 100%;
 }

@@ -18,6 +18,7 @@ function Posts() {
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
     const [newsCount, setNewsCount] = useState(0);
+    const [hiddenContent, setHiddenContent] = useState(false);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await PostService.getPage(limit, page, sort, search);
@@ -54,18 +55,22 @@ function Posts() {
                     filter={filter}
                     setFilter={setFilter}
                     createPost={createPost}
+                    hiddenContent={hiddenContent}
+                    setHiddenContent={setHiddenContent}
                 />
-                <Content
-                    sortedAndSearchedPosts={posts}
-                    postError={postError}
-                    removePost={removePost}
-                    lastElement={lastElement}
-                    isAutoLoading={isAutoLoading}
-                    page={page}
-                    setPage={setPage}
-                    totalPages={totalPages}
-                    isPostsLoading={isPostsLoading}
-                />
+                <div hidden={hiddenContent}>
+                    <Content
+                        sortedAndSearchedPosts={posts}
+                        postError={postError}
+                        removePost={removePost}
+                        lastElement={lastElement}
+                        isAutoLoading={isAutoLoading}
+                        page={page}
+                        setPage={setPage}
+                        totalPages={totalPages}
+                        isPostsLoading={isPostsLoading}
+                    />
+                </div>
             </div>
             <SideBar>
                 <FilterSideBar
