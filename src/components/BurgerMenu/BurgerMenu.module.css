@@ -1,0 +1,14 @@
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.menu {
+    background-color: white;
+    height: 100%;
+}

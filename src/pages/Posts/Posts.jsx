@@ -9,6 +9,9 @@ import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
 import useIsMobile from "../../hooks/useIsMobile";
+import MyInput from "../../components/UI/MyInput/MyInput";
+import AddPostButton from "../../components/AddPostButton/AddPostButton";
+import BurgerMenu from "../../components/BurgerMenu/BurgerMenu";
 
 function Posts({service}) {
     const [posts, setPosts] = useState([])
@@ -18,7 +21,6 @@ function Posts({service}) {
     const [page, setPage] = useState(1);
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
-    const [hiddenContent, setHiddenContent] = useState(false);
     const isMobile = useIsMobile();
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
@@ -55,25 +57,35 @@ function Posts({service}) {
     return (
         <>
             <div className={styles.mainContent}>
-                <SearchAndButton
-                    searchQuery={filter.query}
-                    onSearchQueryChange={query => setFilter({...filter, query})}
-                    createPost={createPost}
-                    onBurgerClick={() => setHiddenContent(!hiddenContent)}
-                />
-                {!hiddenContent && (
-                    <Content
-                        posts={posts}
-                        error={postError}
-                        removePost={removePost}
-                        lastElement={lastElement}
-                        isAutoLoading={isAutoLoading}
-                        page={page}
-                        setPage={setPage}
-                        totalPages={totalPages}
-                        isPostsLoading={isPostsLoading}
+                { !isMobile
+                    ? <SearchAndButton>
+                        <MyInput
+                            value={filter.query}
+                            type='search'
+                            onChange={e => setFilter({...filter, query: e.target.value})}
+                            placeholder='Search...'
+                        />
+                        <AddPostButton createPost={createPost}/>
+                    </SearchAndButton>
+                    : <BurgerMenu
+                        filter={filter}
+                        setFilter={setFilter}
+                        createPost={createPost}
                     />
-                )}
+                }
+
+                <Content
+                    posts={posts}
+                    error={postError}
+                    removePost={removePost}
+                    lastElement={lastElement}
+                    isAutoLoading={isAutoLoading}
+                    page={page}
+                    setPage={setPage}
+                    totalPages={totalPages}
+                    isPostsLoading={isPostsLoading}
+                />
+
             </div>
             <SideBar>
                 <FilterSideBar

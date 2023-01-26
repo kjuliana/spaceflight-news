@@ -27,16 +27,3 @@
     transition: 1s;
 }
 
-@media (max-width: 767px) {
-    .root {
-        flex-direction: column;
-        align-items: start;
-        position: fixed;
-        justify-content: flex-start;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        padding: 5em 1em;
-        width: 100%;
-    }
-}

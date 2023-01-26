@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../../context";
 import styles from './Navbar.module.css';
-import MyRadio from "../MyRadio/MyRadio";
 
 const Navbar = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
