@@ -8,6 +8,7 @@ import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
 import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
+import useIsMobile from "../../hooks/useIsMobile";
 
 function Posts({service}) {
     const [posts, setPosts] = useState([])
@@ -18,6 +19,7 @@ function Posts({service}) {
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
     const [hiddenContent, setHiddenContent] = useState(false);
+    const isMobile = useIsMobile();
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await service.getPage(limit, page, sort, search);
@@ -37,6 +39,10 @@ function Posts({service}) {
     useEffect(() => {
         fetchPosts(limit, page, isAutoLoading, filter.sort, filter.query);
     }, [page, limit, filter, service])
+
+    useEffect(() => {
+        setIsAutoLoading(isMobile)
+    }, [isMobile])
 
     const createPost = (newPost) => {
         setPosts([newPost, ...posts]);
