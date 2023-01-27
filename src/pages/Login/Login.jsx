@@ -4,10 +4,9 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import {AuthContext} from "../../context";
 import styles from './Login.module.css';
 import InputLabel from "../../components/UI/InputLabel/InputLabel";
-import SideBar from "../../components/SideBar/SideBar";
 
 const Login = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {setIsAuth} = useContext(AuthContext);
     const login = event => {
         event.preventDefault();
         setIsAuth(true);

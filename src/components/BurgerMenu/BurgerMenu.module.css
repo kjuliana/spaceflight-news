@@ -7,6 +7,15 @@
     height: 100%;
     width: 100%;
 }
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: end;
+    height: 5em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.99);
+}
 
 .menu {
     background-color: white;

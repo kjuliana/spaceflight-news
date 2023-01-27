@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-import ArticleService from "../../API/ArticleService";
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {useFetching} from "../../hooks/useFetching";
 import {getPagesCount} from "../../utils/page";
 import {useObserver} from "../../hooks/useObserver";
@@ -8,10 +7,9 @@ import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
 import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
-import useIsMobile from "../../hooks/useIsMobile";
 import MyInput from "../../components/UI/MyInput/MyInput";
 import AddPostButton from "../../components/AddPostButton/AddPostButton";
-import BurgerMenu from "../../components/BurgerMenu/BurgerMenu";
+import {AuthContext} from "../../context";
 
 function Posts({service}) {
     const [posts, setPosts] = useState([])
@@ -21,7 +19,7 @@ function Posts({service}) {
     const [page, setPage] = useState(1);
     const [isAutoLoading, setIsAutoLoading] = useState(false);
     const lastElement = useRef();
-    const isMobile = useIsMobile();
+    const {isMobile} = useContext(AuthContext);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await service.getPage(limit, page, sort, search);
@@ -57,8 +55,8 @@ function Posts({service}) {
     return (
         <>
             <div className={styles.mainContent}>
-                { !isMobile
-                    ? <SearchAndButton>
+                { !isMobile &&
+                    <SearchAndButton>
                         <MyInput
                             value={filter.query}
                             type='search'
@@ -67,11 +65,6 @@ function Posts({service}) {
                         />
                         <AddPostButton createPost={createPost}/>
                     </SearchAndButton>
-                    : <BurgerMenu
-                        filter={filter}
-                        setFilter={setFilter}
-                        createPost={createPost}
-                    />
                 }
 
                 <Content

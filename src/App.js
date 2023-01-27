@@ -10,6 +10,7 @@ import Login from "./pages/Login/Login";
 import {AuthContext} from "./context";
 import ArticleService from "./API/ArticleService";
 import BlogService from "./API/BlogService";
+import useIsMobile from "./hooks/useIsMobile";
 
 const privateRouter = createBrowserRouter([
     {
@@ -65,6 +66,7 @@ const publicRouter = createBrowserRouter([
 
 function App() {
     const [isAuth, setIsAuth] = useState(false);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         if (localStorage.getItem('auth')) {
@@ -74,7 +76,7 @@ function App() {
 
     return (
         <AuthContext.Provider value={{
-            isAuth, setIsAuth
+            isAuth, setIsAuth, isMobile
         }}>
             <RouterProvider router={isAuth ? privateRouter : publicRouter}/>
         </AuthContext.Provider>
