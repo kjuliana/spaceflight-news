@@ -24,7 +24,7 @@ function Posts({service}) {
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await service.getPage(limit, page, sort, search);
         const responseCount = await service.getCount(search);
-        if (isAutoLoading) {
+        if (isAutoLoading && page !== 1) {
             setPosts([...posts, ...response.data]);
         } else {
             setPosts(response.data);
@@ -33,12 +33,16 @@ function Posts({service}) {
     });
 
     useObserver(lastElement, page <= totalPages,isAutoLoading && !isPostsLoading, () => {
-            setPage(page + 1);
+        setPage(page + 1);
     });
 
     useEffect(() => {
         fetchPosts(limit, page, isAutoLoading, filter.sort, filter.query);
-    }, [page, limit, filter, service])
+    }, [page, limit, filter]);
+
+    useEffect(() => {
+        setPage(1);
+    }, [service])
 
     useEffect(() => {
         setIsAutoLoading(isMobile)
@@ -66,7 +70,6 @@ function Posts({service}) {
                         <AddPostButton createPost={createPost}/>
                     </SearchAndButton>
                 }
-
                 <Content
                     posts={posts}
                     error={postError}
@@ -80,16 +83,18 @@ function Posts({service}) {
                 />
 
             </div>
-            <SideBar>
-                <FilterSideBar
-                    filter={filter}
-                    setFilter={setFilter}
-                    limit={limit}
-                    setLimit={setLimit}
-                    isAutoLoading={isAutoLoading}
-                    setIsAutoLoading={setIsAutoLoading}
-                />
-            </SideBar>
+            {!isMobile &&
+                <SideBar>
+                    <FilterSideBar
+                        filter={filter}
+                        setFilter={setFilter}
+                        limit={limit}
+                        setLimit={setLimit}
+                        isAutoLoading={isAutoLoading}
+                        setIsAutoLoading={setIsAutoLoading}
+                    />
+                </SideBar>
+            }
         </>
     );
 }

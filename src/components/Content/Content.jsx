@@ -14,7 +14,6 @@ const Content = ({posts, error, removePost, lastElement, isAutoLoading, totalPag
             {error &&
                 <h1>Произошла ошибка ${error}</h1>
             }
-
             <PostList posts={posts} remove={removePost}/>
             <div ref={lastElement} className={styles.lastElement}/>
 
