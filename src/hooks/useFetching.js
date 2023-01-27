@@ -1,5 +1,4 @@
 import {useState} from "react";
-import ArticleService from "../API/ArticleService";
 
 export const useFetching = (callback) => {
     const [isLoading, setIsLoading] = useState(false);

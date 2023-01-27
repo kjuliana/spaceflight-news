@@ -24,7 +24,7 @@ function Posts({service}) {
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page, isAutoLoading, sort, search) => {
         const response = await service.getPage(limit, page, sort, search);
         const responseCount = await service.getCount(search);
-        if (isAutoLoading && page !== 1) {
+        if (isAutoLoading) {
             setPosts([...posts, ...response.data]);
         } else {
             setPosts(response.data);
@@ -38,11 +38,7 @@ function Posts({service}) {
 
     useEffect(() => {
         fetchPosts(limit, page, isAutoLoading, filter.sort, filter.query);
-    }, [page, limit, filter]);
-
-    useEffect(() => {
-        setPage(1);
-    }, [service])
+    }, [page, limit, filter, setFilter]);
 
     useEffect(() => {
         setIsAutoLoading(isMobile)

@@ -24,19 +24,19 @@ const privateRouter = createBrowserRouter([
             },
             {
                 path: "/news",
-                element: <Posts service={ArticleService}/>,
+                element: <Posts service={ArticleService} key="news" />,
             },
             {
                 path: "/news/:postId",
-                element: <PostIdPage service={ArticleService}/>,
+                element: <PostIdPage service={ArticleService} key="news"/>,
             },
             {
                 path: "/blog",
-                element: <Posts service={BlogService}/>,
+                element: <Posts service={BlogService} key="blog"/>,
             },
             {
                 path: "/blog/:postId",
-                element: <PostIdPage service={BlogService}/>,
+                element: <PostIdPage service={BlogService} key="blog"/>,
             },
             {
                 path: "/login",

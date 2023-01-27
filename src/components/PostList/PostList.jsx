@@ -5,7 +5,6 @@ import itemStyles from '../PostItem/PostItem.module.css';
 import styles from './PostList.module.css'
 
 const PostList = ({posts, remove}) => {
-    console.log(posts)
     if (!posts.length) {
         return (
             <h1 style={{textAlign: 'center'}}>
