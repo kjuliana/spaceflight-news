@@ -1,6 +1,6 @@
 import React, {useMemo, useState} from 'react';
 import debounce from "debounce";
-import styles from "../MyInput/MyInput.module.css";
+import MyInput from "../MyInput/MyInput";
 
 const SearchInput = (props) => {
     const [value, setValue] = useState(props.query);
@@ -12,7 +12,7 @@ const SearchInput = (props) => {
     }
 
     return (
-        <input className={styles.root} {...props} onChange={onChange} value={value}/>
+        <MyInput {...props} onChange={onChange} value={value}/>
     );
 };
 

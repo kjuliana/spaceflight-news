@@ -6,11 +6,11 @@ import Posts from "./pages/Posts/Posts";
 import Layout from "./components/Layout/Layout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import PostIdPage from "./pages/PostIdPage/PostIdPage";
-import Login from "./pages/Login/Login";
 import {AuthContext} from "./context";
 import ArticleService from "./API/ArticleService";
 import BlogService from "./API/BlogService";
 import useIsMobile from "./hooks/useIsMobile";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const privateRouter = createBrowserRouter([
     {
@@ -40,7 +40,7 @@ const privateRouter = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login/>
+                element: <LoginPage/>
             }
         ]
     }
@@ -50,15 +50,15 @@ const publicRouter = createBrowserRouter([
     {
         path: "/",
         element: <Layout/>,
-        errorElement: <Login/>,
+        errorElement: <LoginPage/>,
         children: [
             {
                 path: "/",
-                element: <Login/>,
+                element: <Main/>,
             },
             {
                 path: "*",
-                element: <Login/>,
+                element: <LoginPage/>,
             },
         ]
     }

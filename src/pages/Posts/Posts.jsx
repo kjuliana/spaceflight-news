@@ -52,8 +52,6 @@ function Posts({service}) {
         setPosts(posts.filter(p => p.id !== post.id));
     }
 
-    console.log(posts)
-
     return (
         <>
             <div className={styles.mainContent}>

@@ -1,16 +1,25 @@
 .root{
     border: none;
-    padding: 5px 15px;
+    padding: 1em 2em;
+    margin-left: 1em;
     height: 100%;
-    font-size: 14px;
-    background: transparent;
+    text-align: center;
+    background: var(--accent-color);
     cursor: pointer;
-    font-family: system-ui;
-    font: inherit;
+    color: white;
     border-radius: 9999px;
+    transition: 0.4s;
+    box-sizing: content-box;
 }
 
 .root:hover {
+    transform: scale(1.05);
     border-radius: 9999px;
-    background-color: var(--hover-button);
+    background-color: var(--button-hover-color) ;
+}
+
+.root:active {
+    transform: scale(0.97);
+    border-radius: 9999px;
+    background-color: var(--button-active-color);
 }

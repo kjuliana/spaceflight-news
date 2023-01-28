@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import MyInput from "../../components/UI/MyInput/MyInput";
-import MyButton from "../../components/UI/MyButton/MyButton";
+import MyInput from "../UI/MyInput/MyInput";
+import MyButton from "../UI/MyButton/MyButton";
 import {AuthContext} from "../../context";
 import styles from './Login.module.css';
-import InputLabel from "../../components/UI/InputLabel/InputLabel";
+import InputLabel from "../UI/InputLabel/InputLabel";
 
 const Login = () => {
     const {setIsAuth} = useContext(AuthContext);
@@ -21,7 +21,7 @@ const Login = () => {
                     <MyInput type='text' placeholder='Введите логин' defaultValue='demo'/>
                 </InputLabel>
                 <InputLabel label={'password'}>
-                    <MyInput id="sdjfg" name='987' autoComplete='off' readOnly type='password' placeholder='Введите пароль' defaultValue='demo0.;demo!23hgdh'/>
+                    <MyInput pattern='demo0.;demo!23hgdh' id="sdjfg" name='987' autoComplete='off' type='password' placeholder='Введите пароль' defaultValue='demo0.;demo!23hgdh'/>
                 </InputLabel>
                 <MyButton>Sign in</MyButton>
             </form>

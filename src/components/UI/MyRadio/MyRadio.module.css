@@ -51,7 +51,7 @@
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    background-color: #45a0e1;
+    background-color: var(--accent-color);
 }
 
 .radio + .label:after {

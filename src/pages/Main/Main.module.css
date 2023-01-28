@@ -1,5 +1,33 @@
 .root {
     flex-grow: 1;
-    margin: 3em;
+    margin: 5em 0;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.conteiner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.conteinerLogin {
+    width: 80%;
+    background-image: url(https://cdn.culture.ru/images/82529ce6-49b7-571c-9b96-b4dccece3cf4);
+    background-size: contain;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 1em;
+    margin: 2em;
+    border: 1px solid var(--support-color);
+}
+
+.image {
+    width: 80%;
+    border-radius: 1em;
+    border: 1px solid var(--support-color);
+    margin: 2em;
 }

@@ -40,8 +40,8 @@
     width: 8px;
     height: 4px;
     border-radius: 1px;
-    border-left: 4px solid #45a0e1;
-    border-bottom: 4px solid #45a0e1;
+    border-left: 4px solid var(--accent-color);
+    border-bottom: 4px solid var(--accent-color);
     transform: rotate(-45deg);
 }
 

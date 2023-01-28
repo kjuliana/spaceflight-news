@@ -1,7 +1,6 @@
 .root {
-    width: 75%;
+    width: 100%;
     padding: 1em 15px;
-    /*margin: 5px 0;*/
     border: none;
     border-radius: 9999px;
     background-color: var(--hover-button);
