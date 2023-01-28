@@ -10,6 +10,7 @@ import SideBar from "../../components/SideBar/SideBar";
 import MyInput from "../../components/UI/MyInput/MyInput";
 import AddPostButton from "../../components/AddPostButton/AddPostButton";
 import {AuthContext} from "../../context";
+import debounce from 'debounce';
 
 function Posts({service}) {
     const [posts, setPosts] = useState([])
@@ -60,7 +61,7 @@ function Posts({service}) {
                         <MyInput
                             value={filter.query}
                             type='search'
-                            onChange={e => setFilter({...filter, query: e.target.value})}
+                            onChange={debounce(e => setFilter({...filter, query: e.target.value}), 1000)}
                             placeholder='Search...'
                         />
                         <AddPostButton createPost={createPost}/>
