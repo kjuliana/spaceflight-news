@@ -11,6 +11,7 @@ const PostForm = ({create}) => {
         e.preventDefault();
         const newPost = {
             ...post, id: Date.now(), publishedAt: Date.now(), imageUrl: 'https://images.unsplash.com/photo-1620428268482-cf1851a36764?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1709&q=80'
+            // ...post, id: Date.now(), publishedAt: Date.now(), imageUrl: 'https://cdn.culture.ru/images/82529ce6-49b7-571c-9b96-b4dccece3cf4'
         };
         create(newPost);
         setPost({title: '', summary: '', newsSite: ''});
