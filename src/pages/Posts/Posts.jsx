@@ -7,10 +7,9 @@ import SearchAndButton from "../../components/SearchAndButton/SearchAndButton";
 import Content from "../../components/Content/Content";
 import FilterSideBar from "../../components/Filter/FilterSideBar";
 import SideBar from "../../components/SideBar/SideBar";
-import MyInput from "../../components/UI/MyInput/MyInput";
 import AddPostButton from "../../components/AddPostButton/AddPostButton";
 import {AuthContext} from "../../context";
-import debounce from 'debounce';
+import SearchInput from "../../components/UI/SearchInput/SearchInput";
 
 function Posts({service}) {
     const [posts, setPosts] = useState([])
@@ -53,15 +52,17 @@ function Posts({service}) {
         setPosts(posts.filter(p => p.id !== post.id));
     }
 
+    console.log(posts)
+
     return (
         <>
             <div className={styles.mainContent}>
                 { !isMobile &&
                     <SearchAndButton>
-                        <MyInput
-                            value={filter.query}
+                        <SearchInput
+                            query={filter.query}
                             type='search'
-                            onChange={debounce(e => setFilter({...filter, query: e.target.value}), 1000)}
+                            onChange={query => setFilter({...filter, query: query})}
                             placeholder='Search...'
                         />
                         <AddPostButton createPost={createPost}/>
