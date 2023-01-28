@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: space-around;
     font-weight: bold;
 }
 
@@ -20,6 +21,20 @@
     white-space: nowrap;
     cursor: pointer;
     font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.activeItem {
+    font: inherit;
+    border: none;
+    background: var(--hover-button);
+    padding: 15px;
+    border-radius: 9999px;
+    transition: 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
 }
 
 .item:hover {

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context";
 import styles from './Navbar.module.css';
 
@@ -14,9 +14,28 @@ const Navbar = () => {
     return (
         <div className={styles.root}>
             <div className={styles.items}>
-                <Link className={styles.item} to="/">Main</Link>
-                <Link className={styles.item} to="/news">🚀 News</Link>
-                <Link className={styles.item} to="/blog">🌍 Blog</Link>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? styles.activeItem : styles.item
+                    }
+                    to="/">
+                    Main
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? styles.activeItem : styles.item
+                    }
+                    to="/news">
+                    🚀 News
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? styles.activeItem : styles.item
+                    }
+                    to="/blog">
+                    🌍 Blog
+                </NavLink>
+
                 {isAuth && (
                     <button className={styles.item} onClick={logout}>
                         Log Out
