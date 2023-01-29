@@ -11,10 +11,12 @@ const BurgerMenu = ({children}) => {
             <div className={styles.header}>
                 <Burger onClick={() => setIsMenu(!isMenu)}/>
             </div>
-            <div className={styles.menu} hidden={!isMenu}>
-                <Navbar/>
-                {children}
-            </div>
+            {isMenu &&
+                <div className={styles.menu}>
+                    <Navbar/>
+                    {children}
+                </div>
+            }
         </div>
     );
 };
