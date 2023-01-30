@@ -13,7 +13,7 @@ const Main = () => {
             <h2>Get an overview of the latest Spaceflight news, from various sources!</h2>
             {isAuth
                 ? <div className={styles.isAuthWrapper}>
-                    <img className={styles.image} src={cosmonauts}/>
+                    <img className={styles.image} src={cosmonauts} alt={'Cosmonauts from different countries'}/>
                 </div>
                 : <div className={styles.isNotAuthWrapper}>
                     <Login/>
