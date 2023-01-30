@@ -3,6 +3,7 @@ import MyInput from "../UI/MyInput/MyInput";
 import MyButton from "../UI/MyButton/MyButton";
 import styles from './PostForm.module.css';
 import InputLabel from "../UI/InputLabel/InputLabel";
+import lonely_cosmonaut from "../../asset/lonely_cosmonaut.jpg"
 
 const PostForm = ({create}) => {
     const [post, setPost] = useState({title: '', summary: '', newsSite: ''})
@@ -10,7 +11,10 @@ const PostForm = ({create}) => {
     const addNewPost = (e) => {
         e.preventDefault();
         const newPost = {
-            ...post, id: Date.now(), publishedAt: Date.now(), imageUrl: '../../assets/lonely-dog.jpeg'
+            ...post,
+            id: Date.now(),
+            publishedAt: Date.now(),
+            imageUrl: lonely_cosmonaut
         };
         create(newPost);
         setPost({title: '', summary: '', newsSite: ''});

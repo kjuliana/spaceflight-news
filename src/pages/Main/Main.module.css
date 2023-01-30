@@ -8,13 +8,13 @@
     text-align: center;
 }
 
-.conteiner {
+.isAuthWrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.conteinerLogin {
+.isNotAuthWrapper {
     width: 80%;
     background-image: url('../../asset/space-dog.jpeg');
     background-size: contain;
