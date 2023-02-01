@@ -26,8 +26,6 @@ const PostIdPage = ({service}) => {
         minute: 'numeric'
     };
 
-    console.log(post);
-
     return (
         <>
             {

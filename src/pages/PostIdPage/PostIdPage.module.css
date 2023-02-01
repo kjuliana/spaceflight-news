@@ -1,23 +1,11 @@
 .root {
-    max-width: 50%;
-    margin: auto;
+    max-width: 70%;
+    margin: 3em auto;
     background-color: white;
+    padding: 2em;
+    border-radius: 1em;
 }
 
-.content {
-    margin-top: 2em;
-}
-
-.comments {
-    margin-top: 2em;
-    border-top: 2px solid var(--main-color);
-}
-
-.comment {
-    margin-top: 1em;
-    border-left: 4px solid var(--main-color);
-    padding-left: 2%;
-}
 
 .image {
     width: 100%;
@@ -29,7 +17,7 @@
 .info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 .date {
