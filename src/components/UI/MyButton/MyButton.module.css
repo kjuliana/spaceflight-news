@@ -1,4 +1,4 @@
-.root{
+.root {
     border: none;
     padding: 1em 2em;
     margin-left: 1em;
@@ -10,7 +10,7 @@
     border-radius: 9999px;
     transition: 0.4s;
     box-sizing: content-box;
-    font-weight: 700;
+    font-size: 14px;
 }
 
 .root:hover {
