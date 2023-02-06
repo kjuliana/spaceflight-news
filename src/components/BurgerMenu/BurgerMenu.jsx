@@ -9,10 +9,13 @@ const BurgerMenu = ({children}) => {
     return (
         <div className={styles.root}>
             <div className={styles.header}>
-                <Burger onClick={() => setIsMenu(!isMenu)}/>
+                <Burger
+                    isMenu = {isMenu}
+                    onClick={() => setIsMenu(!isMenu)}
+                />
             </div>
             {isMenu &&
-                <div className={styles.menu}>
+                <div className={styles.menu} onClick={() => setIsMenu(!isMenu)}>
                     <Navbar/>
                     {children}
                 </div>

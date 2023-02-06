@@ -9,7 +9,7 @@
     cursor: pointer;
     flex-shrink: 0;
     align-self: center;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .span {
@@ -18,7 +18,7 @@
     width: 100%;
     height: 2px;
     top: 11px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .root:before {
@@ -38,20 +38,16 @@
     transition: 0.3s;
 }
 
-/*.root:hover:before {*/
-/*    transform: translateY(11px) rotate(45deg);*/
-/*}*/
+.active:before{
+    transform: translateY(11px) rotate(45deg);
+}
 
-/*.root:hover:after {*/
-/*    transform: translateY(-11px) rotate(-45deg);*/
-/*}*/
+.active:after{
+    transform: translateY(-11px) rotate(-45deg);
+}
 
-/*root.active {*/
+span.active {
+    opacity: 0;
+}
 
-/*}*/
-
-/*span.active {*/
-/*    transform: scaleX(0);*/
-/*    opacity: 0;*/
-/*}*/
 
