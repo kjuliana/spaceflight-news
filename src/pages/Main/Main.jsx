@@ -3,9 +3,10 @@ import styles from './Main.module.css';
 import Login from "../../components/Login/Login";
 import {AuthContext} from "../../context";
 import cosmonauts from "../../asset/cosmonauts.jpeg"
+import MyButton from "../../components/UI/MyButton/MyButton";
 
 const Main = () => {
-    const {isAuth} = useContext(AuthContext);
+    const {isAuth, isMobile} = useContext(AuthContext);
 
     return (
         <div className={styles.root}>
@@ -17,6 +18,20 @@ const Main = () => {
                 </div>
                 : <div className={styles.isNotAuthWrapper}>
                     <Login/>
+                </div>
+            }
+            {isMobile &&
+                <div>
+                    <a href="/news">
+                        <MyButton>
+                            Go to news  🚀
+                        </MyButton>
+                    </a>
+                    <a href="/blog">
+                        <MyButton>
+                            Go to Blog  🌏
+                        </MyButton>
+                    </a>
                 </div>
             }
         </div>
