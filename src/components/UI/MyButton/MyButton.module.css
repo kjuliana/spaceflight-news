@@ -10,6 +10,7 @@
     border-radius: 9999px;
     transition: 0.4s;
     box-sizing: content-box;
+    font-weight: 700;
 }
 
 .root:hover {
