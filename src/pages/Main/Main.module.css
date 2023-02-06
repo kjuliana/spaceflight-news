@@ -31,3 +31,7 @@
     border: 1px solid var(--support-color);
     margin: 2em;
 }
+
+.navButtons {
+    display: flex;
+}

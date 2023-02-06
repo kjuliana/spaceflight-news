@@ -4,6 +4,7 @@ import Login from "../../components/Login/Login";
 import {AuthContext} from "../../context";
 import cosmonauts from "../../asset/cosmonauts.jpeg"
 import MyButton from "../../components/UI/MyButton/MyButton";
+import {NavLink} from "react-router-dom";
 
 const Main = () => {
     const {isAuth, isMobile} = useContext(AuthContext);
@@ -21,17 +22,17 @@ const Main = () => {
                 </div>
             }
             {isMobile &&
-                <div>
-                    <a href="/news">
+                <div className={styles.navButtons}>
+                    <NavLink to="/news">
                         <MyButton>
                             Go to news  🚀
                         </MyButton>
-                    </a>
-                    <a href="/blog">
+                    </NavLink>
+                    <NavLink to="/blog">
                         <MyButton>
                             Go to Blog  🌏
                         </MyButton>
-                    </a>
+                    </NavLink>
                 </div>
             }
         </div>
