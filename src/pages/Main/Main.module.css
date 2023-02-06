@@ -11,7 +11,9 @@
 .isAuthWrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .isNotAuthWrapper {
@@ -34,4 +36,9 @@
 
 .navButtons {
     display: flex;
+    justify-content: space-between;
+}
+
+.link {
+    padding: 1em;
 }

@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import debounce from "debounce";
 import MyInput from "../MyInput/MyInput";
+import styles from './SearchInput.module.css';
 
 const SearchInput = (props) => {
     const [value, setValue] = useState(props.query);

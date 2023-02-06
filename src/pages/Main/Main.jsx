@@ -16,25 +16,26 @@ const Main = () => {
             {isAuth
                 ? <div className={styles.isAuthWrapper}>
                     <img className={styles.image} src={cosmonauts} alt={'Cosmonauts from different countries'}/>
+                    {isMobile &&
+                    <div className={styles.navButtons}>
+                        <NavLink to="/news" className={styles.link}>
+                            <MyButton>
+                                Go to news  🚀
+                            </MyButton>
+                        </NavLink>
+                        <NavLink to="/blog" className={styles.link}>
+                            <MyButton>
+                                Go to Blog  🌏
+                            </MyButton>
+                        </NavLink>
+                    </div>
+                    }
                 </div>
                 : <div className={styles.isNotAuthWrapper}>
                     <Login/>
                 </div>
             }
-            {isMobile &&
-                <div className={styles.navButtons}>
-                    <NavLink to="/news">
-                        <MyButton>
-                            Go to news  🚀
-                        </MyButton>
-                    </NavLink>
-                    <NavLink to="/blog">
-                        <MyButton>
-                            Go to Blog  🌏
-                        </MyButton>
-                    </NavLink>
-                </div>
-            }
+
         </div>
     );
 };

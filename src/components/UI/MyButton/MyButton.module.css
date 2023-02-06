@@ -1,7 +1,6 @@
 .root {
     border: none;
     padding: 1em 2em;
-    margin-left: 1em;
     height: 100%;
     text-align: center;
     background: var(--accent-color);
