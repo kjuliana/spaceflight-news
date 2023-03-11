@@ -3,7 +3,7 @@
 ![Страница новостей, поисковой запрос "Uk space"](assets/screenshot.png)
 
 ## Где посмотреть?
-1. Перейти на https://spaceflightnews-kjuliana.vercel.app
+1. Перейти на https://spaceflight-newsblog.vercel.app
 2. Поля для авторизации заполнены, достаточно нажать на кнопку `Войти`
 
 В приложении две основные части: `News` и `Blog`. 
